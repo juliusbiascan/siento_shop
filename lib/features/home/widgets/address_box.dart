@@ -15,16 +15,16 @@ class AddressBox extends StatelessWidget {
       padding: EdgeInsets.only(left: mq.width * .025),
       height: mq.height * .055,
       decoration: BoxDecoration(
-          border: Border.all(width: 0.7, color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(15)
-          // gradient: LinearGradient(
-          //   colors: [
-          //     Color.fromARGB(255, 114, 226, 221),
-          //     Color.fromARGB(255, 162, 236, 233),
-          //   ],
-          //   stops: [0.5, 1.0],
-          // ),
-          ),
+        border: Border.all(width: 0.7, color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(15),
+        gradient: const LinearGradient(
+          colors: [
+            Color.fromARGB(255, 15, 15, 15),
+            Color.fromARGB(255, 30, 30, 30),
+          ],
+          stops: [0.5, 1.0],
+        ),
+      ),
       child: Row(
         children: [
           Icon(Icons.location_on_outlined,
@@ -34,18 +34,18 @@ class AddressBox extends StatelessWidget {
               padding: EdgeInsets.only(left: mq.width * .0125),
               child: Text(
                 "Delivery to ${user.name} - ${user.address}",
-                style: TextStyle(
-                    color: GlobalVariables.secondaryGreyTextColor,
+                style: const TextStyle(
+                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                     overflow: TextOverflow.ellipsis,
                     fontSize: 12),
               ),
             ),
           ),
-          // Padding(
-          //     padding: EdgeInsets.only(
-          //         left: mq.width * .0125, right: mq.width * .0125),
-          //     child: const Icon(Icons.arrow_drop_down_outlined, size: 22))
+          Padding(
+              padding: EdgeInsets.only(
+                  left: mq.width * .0125, right: mq.width * .0125),
+              child: const Icon(Icons.arrow_drop_down_outlined, size: 22))
         ],
       ),
     );

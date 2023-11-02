@@ -1,7 +1,6 @@
-import 'package:siento_shop/common/widgets/color_loader_2.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/constants/utils.dart';
-import 'package:siento_shop/features/account/services/account_services.dart';
 import 'package:siento_shop/main.dart';
 import 'package:flutter/material.dart';
 
@@ -55,7 +54,10 @@ class _PostsScreenState extends State<PostsScreen> {
             ),
             body: products == null || products!.isEmpty
                 //if no products are added by admin to sell
-                ? ColorLoader2()
+                ? SpinKitFadingCube(
+                    color: Theme.of(context).colorScheme.primary,
+                    size: 50.0,
+                  )
                 //  products!.isEmpty
                 //  const Center(
                 //     child: Text("Add some products to sell",

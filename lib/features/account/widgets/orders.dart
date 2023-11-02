@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
 import 'package:siento_shop/constants/global_variables.dart';
-import 'package:siento_shop/common/widgets/color_loader_2.dart';
 import 'package:siento_shop/features/account/widgets/single_product.dart';
 import 'package:siento_shop/features/account/services/account_services.dart';
 import 'package:siento_shop/features/account/screens/all_orders_screen.dart';
 import 'package:siento_shop/features/order_details/screens/order_details_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Orders extends StatefulWidget {
   const Orders({super.key});
@@ -24,13 +23,6 @@ class Orders extends StatefulWidget {
 // status == 4 Product returned back
 
 class _OrdersState extends State<Orders> {
-  // List list = [
-  //   "https://images.unsplash.com/photo-1681239063386-fc4a373c927b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-  //   "https://images.unsplash.com/photo-1682006289331-19e4e0327d6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-  //   "https://images.unsplash.com/photo-1647891940243-77a6483a152e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-  //   "https://images.unsplash.com/photo-1681926946700-73c10c72ef15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-  // ];
-
   List<Order>? orders;
   final AccountServices accountServices = AccountServices();
   bool showLoader = false;
@@ -69,16 +61,13 @@ class _OrdersState extends State<Orders> {
                   : () {
                       Navigator.pushNamed(context, AllOrdersScreen.routeName,
                           arguments: orders);
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         AllOrdersScreen(allOrders: orders)));
                     },
               child: Container(
                 padding: EdgeInsets.only(right: mq.width * 0.04),
                 child: Text(
                   "See all",
                   style: TextStyle(
-                      // fontSize: 18,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: GlobalVariables.selectedNavBarColor),
                 ),
@@ -87,13 +76,15 @@ class _OrdersState extends State<Orders> {
           ],
         ),
         showLoader
-            ? const ColorLoader2()
+            ? SpinKitFadingCube(
+                color: Theme.of(context).colorScheme.primary,
+                size: 50.0,
+              )
             : orders!.isEmpty
                 ? Column(
                     children: [
                       Image.asset("assets/images/no-orderss.png",
                           height: mq.height * .15),
-
                       const Text("No Orders found"),
                       SizedBox(height: mq.height * 0.02),
                       ElevatedButton(
@@ -105,18 +96,14 @@ class _OrdersState extends State<Orders> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
                               backgroundColor: Colors.deepPurpleAccent),
-                          child: const Text(
-                            "Keep Exploring",
-                            style: TextStyle(color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Keep Exploring",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
                           )),
-                      // TextButton(
-                      //     onPressed: () {
-                      //       Navigator.pushNamed(context, HomeScreen.routeName);
-                      //     },
-                      //     child: Text(
-                      //       "Explore ",
-                      //       style: TextStyle(fontSize: 20),
-                      //     ))
                     ],
                   )
                 : Container(
@@ -127,10 +114,6 @@ class _OrdersState extends State<Orders> {
                       scrollDirection: Axis.horizontal,
                       itemCount: orders!.length,
                       itemBuilder: (context, index) {
-                        // debugPrint(
-                        //     " $index value of container width =======> ${mq.height * 0.025}");
-                        print(
-                            "\n -------------------> Fetched ORDERS are ${orders![index].id}");
                         return GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(

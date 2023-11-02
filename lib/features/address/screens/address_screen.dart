@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
-
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/providers/user_provider.dart';
@@ -33,7 +31,6 @@ class _AddressScreenState extends State<AddressScreen> {
   int currentStep = 0;
   bool goToPayment = false;
   String addressToBeUsed = "";
-  final _razorpay = Razorpay();
   bool goToFinalPayment = false;
   List<PaymentItem> paymentItems = [];
   final _addressFormKey = GlobalKey<FormState>();
@@ -45,7 +42,6 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   void initState() {
     super.initState();
-    // suoer.initState
     _googlePayConfigFuture =
         PaymentConfiguration.fromAsset("google_pay_config.json");
     paymentItems.add(
@@ -57,9 +53,7 @@ class _AddressScreenState extends State<AddressScreen> {
     );
 
     super.initState();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+
     totalAmount = double.parse(widget.totalAmount).toInt();
   }
 
@@ -72,15 +66,8 @@ class _AddressScreenState extends State<AddressScreen> {
     super.dispose();
   }
 
-  // void onApplyPayResult(paymentResult) {
-  //   // implement apple pay function
-  // }
-
   void onGooglePayResult(paymentResult) {
     // implement google pay function
-    print("\n===> onGooglePayResult running...");
-    print(
-        "\n\nAddress of user provider ====> : ${Provider.of<UserProvider>(context, listen: false).user.address}");
     if (Provider.of<UserProvider>(context, listen: false)
         .user
         .address
@@ -96,36 +83,34 @@ class _AddressScreenState extends State<AddressScreen> {
   }
 
   void payPressed(String addressFromProvider) {
-    // addressToBeUsed = "";
+    addressToBeUsed = "";
 
-    // bool isFormValid = flatBuildingController.text.isNotEmpty ||
-    //     areaController.text.isNotEmpty ||
-    //     pincodeController.text.isNotEmpty ||
-    //     cityController.text.isNotEmpty;
+    bool isFormValid = flatBuildingController.text.isNotEmpty ||
+        areaController.text.isNotEmpty ||
+        pincodeController.text.isNotEmpty ||
+        cityController.text.isNotEmpty;
 
-    // if (isFormValid) {
-    //   if (_addressFormKey.currentState!.validate()) {
-    //     addressToBeUsed =
-    //         "${flatBuildingController.text}, ${areaController.text}, ${cityController.text} - ${pincodeController.text}";
-    //   } else {
-    //     throw Exception("Please enter all the values");
-    //   }
-    // } else if (addressFromProvider.isNotEmpty) {
-    //   addressToBeUsed = addressFromProvider;
-    // } else {
-    //   showSnackBar(context: context, text: "Error in address module");
-    // }
+    if (isFormValid) {
+      if (_addressFormKey.currentState!.validate()) {
+        addressToBeUsed =
+            "${flatBuildingController.text}, ${areaController.text}, ${cityController.text} - ${pincodeController.text}";
+      } else {
+        throw Exception("Please enter all the values");
+      }
+    } else if (addressFromProvider.isNotEmpty) {
+      addressToBeUsed = addressFromProvider;
+    } else {
+      showSnackBar(context: context, text: "Error in address module");
+    }
 
-    // print("Address to be used:\n==> $addressToBeUsed");
-
-    // if (Provider.of<UserProvider>(context, listen: false)
-    //     .user
-    //     .address
-    //     .isEmpty) {
-    //   addressServices.saveUserAddress(
-    //       context: context, address: addressToBeUsed);
-    //   // print( s of user in provider ====> : ${Provider.of<UserProvider>(context, listen: false).user.address}");
-    // }
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
+      addressServices.saveUserAddress(
+          context: context, address: addressToBeUsed);
+      // print( s of user in provider ====> : ${Provider.of<UserProvider>(context, listen: false).user.address}");
+    }
 
     addressServices.placeOrder(
         context: context,
@@ -159,8 +144,6 @@ class _AddressScreenState extends State<AddressScreen> {
     } else {
       showSnackBar(context: context, text: "Error in address module");
     }
-
-    print("Address to be used:\n==> $addressToBeUsed");
 
     if (Provider.of<UserProvider>(context, listen: false)
         .user
@@ -241,12 +224,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 padding: EdgeInsets.all(mq.height * .01),
                                 // color: Colors.red,
                                 alignment: Alignment.center,
-                                foregroundDecoration: const BoxDecoration(
-                                    // image: DecorationImage(
-                                    //   image: AssetImage(
-                                    //       "assets/images/chatbot2.png"),
-                                    // ),
-                                    ),
+
                                 child: Text(checkoutSteps[i]),
                               ),
                             ),
@@ -266,10 +244,10 @@ class _AddressScreenState extends State<AddressScreen> {
                                   style: TextStyle(fontSize: 20))),
                           SizedBox(height: mq.height * .02),
                           SizedBox(
-                            // height: mq.height * .55,
-                            // width: double.infinity,
+                            height: mq.height * .55,
+                            width: double.infinity,
                             child: ListView.builder(
-                                // padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 scrollDirection: Axis.vertical,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
@@ -279,28 +257,61 @@ class _AddressScreenState extends State<AddressScreen> {
                                   return DeliveryProduct(index: index);
                                 }),
                           ),
-                          SizedBox(height: mq.height * .02),
+
+                          //google pay
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Text("Select payment method",
+                                  style: GlobalVariables.appBarTextStyle),
+                              Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.black12,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(mq.width * .025),
+                                  child: const Text(
+                                    "GOOGLE PAY",
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: mq.height * .025),
+                              FutureBuilder<PaymentConfiguration>(
+                                future: _googlePayConfigFuture,
+                                builder: (context, snapshot) => snapshot.hasData
+                                    ? GooglePayButton(
+                                        onPressed: () {
+                                          payPressed(address);
+                                        },
+                                        paymentConfiguration: snapshot.data!,
+                                        paymentItems: paymentItems,
+                                        type: GooglePayButtonType.buy,
+                                        margin:
+                                            const EdgeInsets.only(top: 15.0),
+                                        onPaymentResult: onGooglePayResult,
+                                        loadingIndicator: const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      )
+                                    : const SizedBox(
+                                        child: Center(
+                                            child: Text(
+                                                "Snapshot does not have data")),
+                                      ),
+                              ),
+                            ],
+                          ),
                           CustomButton(
                               text: "Pay now",
                               onTap: () {
                                 setState(() {
                                   goToFinalPayment = true;
                                 });
-                                var options = {
-                                  'key': 'rzp_test_7NBmERXaABkUpY',
-                                  //amount is in paisa, multiply by 100 to convert
-                                  'amount': 100 * totalAmount,
-                                  'name': 'AKR Company',
-                                  'description': 'Ecommerce Bill',
-                                  'prefill': {
-                                    'contact': '8888888888',
-                                    'email': 'test@razorpay.com'
-                                  }
-                                };
-
                                 try {
-                                  _razorpay.open(options);
-
                                   Future.delayed(const Duration(seconds: 2),
                                       () {
                                     showDialog(
@@ -364,58 +375,6 @@ class _AddressScreenState extends State<AddressScreen> {
                               color: const Color.fromARGB(255, 108, 255, 255)),
                         ],
                       )
-
-//google pay
-/*
- Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text("Select payment method",
-                              style: GlobalVariables.appBarTextStyle),
-                          Container(
-                            width: double.infinity,
-                            // decoration: BoxDecoration(
-                            //   border: Border.all(
-                            //     color: Colors.black12,
-                            //   ),
-                            // ),
-                            child: Padding(
-                              padding: EdgeInsets.all(mq.width * .025),
-                              child: const Text(
-                                "GOOGLE PAY",
-                                style: TextStyle(fontSize: 14),
-                              ),
-                            ),
-                          ),
-
-                          // SizedBox(height: mq.height * .025),
-                          FutureBuilder<PaymentConfiguration>(
-                            future: _googlePayConfigFuture,
-                            builder: (context, snapshot) => snapshot.hasData
-                                ? GooglePayButton(
-                                    onPressed: () {
-                                      payPressed(address);
-                                    },
-                                    paymentConfiguration: snapshot.data!,
-                                    paymentItems: paymentItems,
-                                    type: GooglePayButtonType.buy,
-                                    margin: const EdgeInsets.only(top: 15.0),
-                                    onPaymentResult: onGooglePayResult,
-                                    loadingIndicator: const Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                  )
-                                : const SizedBox(
-                                    child: Center(
-                                        child: Text(
-                                            "Snapshot does not have data")),
-                                  ),
-                          ),
-                        ],
-                      )
-                    
-*/
-
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -487,36 +446,16 @@ class _AddressScreenState extends State<AddressScreen> {
                                     controller: cityController,
                                     hintText: "Town/City"),
                                 SizedBox(height: mq.height * .04),
-                                // CustomButton(
-                                //   onTap: () {
-                                //     // ensuring form validation and matching passwords
-                                //   },
-                                //   // style: ElevatedButton.styleFrom(
-                                //   //     shape: RoundedRectangleBorder(
-                                //   //         borderRadius: BorderRadius.circular(12)),
-                                //   //     minimumSize: Size(mq.width, mq.height * 0.08),
-                                //   //     backgroundColor: Colors.orange.shade700),
-                                //   text:
-                                //     "Proceed To Pay",
-                                // ),
-
                                 CustomButton(
                                   text: "Deliver to this address",
                                   onTap: () {
                                     deliverToThisAddress(address);
-                                    // setState(() {
-                                    //   goToPayment = true;
-                                    // });
+                                    setState(() {
+                                      goToPayment = true;
+                                    });
                                   },
                                   color: Colors.amber[400],
                                 ),
-
-                                //
-                                //
-                                //
-                                //
-                                //
-                                //
                               ],
                             ),
                           ),
@@ -526,69 +465,6 @@ class _AddressScreenState extends State<AddressScreen> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    print(
-        "\n\nPayment successful : \n\nPayment ID :  ${response.paymentId} \n\n Order ID : ${response.orderId} \n\n Signature : ${response.signature}");
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Success"),
-        content: Text(
-            "Payment ID : ${response.paymentId}\nOrder ID : ${response.orderId}\nSignature : ${response.signature}"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text("OK"),
-          )
-        ],
-      ),
-    );
-  }
-
-  void _handlePaymentError(PaymentFailureResponse response) {
-    print(
-        "Payment Error ==> Code : ${response.code} \nMessage : ${response.message}  ");
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Oops, Error occured"),
-        content: Text(
-            "Payment Error ==> Code : ${response.code} \nMessage : ${response.message}"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text("OK"),
-          )
-        ],
-      ),
-    );
-  }
-
-  void _handleExternalWallet(ExternalWalletResponse response) {
-    print("External Wallet : ${response.walletName}");
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("External Wallet"),
-        content: Text("External Wallet : ${response.walletName}"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text("OK"),
-          )
-        ],
       ),
     );
   }

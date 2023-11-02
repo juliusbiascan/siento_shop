@@ -92,12 +92,12 @@ class _AuthScreenState extends State<AuthScreen> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
-                                "assets/images/logo.png",
+                                "assets/images/app_iconv2.png",
                                 height: mq.height * .16,
                               ),
                             ),
                             SizedBox(height: mq.height * .03),
-                            const Text("Welcome to eShop",
+                            const Text("Welcome to SientoShop",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500, fontSize: 25)),
                             SizedBox(height: mq.height * .05),
@@ -198,7 +198,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(20),
-                              child: Image.asset("assets/images/logo.png",
+                              child: Image.asset("assets/images/app_iconv2.png",
                                   height: mq.height * .16),
                             ),
                             SizedBox(height: mq.height * .03),
@@ -341,7 +341,7 @@ Widget signInScreen({
                       ),
                     ),
                     SizedBox(height: mq.height * .03),
-                    const Text("Welcome to eShop",
+                    const Text("Welcome to SientoShop",
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 25)),
                     SizedBox(height: mq.height * .05),

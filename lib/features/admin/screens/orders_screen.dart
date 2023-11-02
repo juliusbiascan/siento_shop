@@ -1,11 +1,9 @@
-import 'package:siento_shop/common/widgets/color_loader_2.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
-
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/order.dart';
-import 'package:siento_shop/common/widgets/loader.dart';
 import 'package:siento_shop/features/admin/services/admin_services.dart';
 import 'package:siento_shop/features/account/widgets/single_product.dart';
 import 'package:siento_shop/features/order_details/screens/order_details_screen.dart';
@@ -40,9 +38,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
         context: context,
       ),
       body: orders == null
-          ? const ColorLoader2()
+          ? SpinKitFadingCube(
+              color: Theme.of(context).colorScheme.primary,
+              size: 50.0,
+            )
           : GridView.builder(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 10,
                   childAspectRatio: 1.75,
@@ -65,13 +66,13 @@ class _OrdersScreenState extends State<OrdersScreen> {
             ),
       floatingActionButton: FloatingActionButton.extended(
         elevation: 10,
-        icon: Icon(Icons.logout_outlined),
+        icon: const Icon(Icons.logout_outlined),
         onPressed: () {
           AccountServices().logOut(context);
         },
         backgroundColor: Colors.deepPurple.shade600,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        label: Text(
+        label: const Text(
           "LogOut",
           style: TextStyle(fontSize: 12),
         ),

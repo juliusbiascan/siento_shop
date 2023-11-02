@@ -11,15 +11,12 @@ class CarouselImage extends StatelessWidget {
     return CarouselSlider(
       items: GlobalVariables.carouselImages.map((imageUrl) {
         return Builder(
-          builder: (context) => Container(
-            padding: EdgeInsets.symmetric(horizontal: mq.height * .025),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                )),
-          ),
+          builder: (context) => ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+              )),
         );
       }).toList(),
       options: CarouselOptions(

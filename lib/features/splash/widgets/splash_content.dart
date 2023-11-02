@@ -18,13 +18,13 @@ class SplashContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/logo.png",
+              "assets/images/app_iconv2.png",
               height: 40,
               // height: mq.height * .04,
             ),
             SizedBox(width: mq.width * .03),
             Text(
-              "eSHOP",
+              "SIENTO",
               style: TextStyle(
                 fontSize: 50,
                 color: Colors.orange.shade400,

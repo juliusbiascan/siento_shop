@@ -1,11 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:siento_shop/common/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:siento_shop/main.dart';
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
 
-String uri = 'http://10.0.2.2:3000';
+//String uri = 'https://lively-pike-tux.cyclic.app';
+String uri = kIsWeb ? 'http://localhost:3000' : 'http://10.0.2.2:3000';
 
 class GlobalVariables {
   // COLORS
@@ -76,6 +76,7 @@ class GlobalVariables {
       'image': 'assets/images/fashion-svg.svg',
     },
   ];
+
   static const List<Map<String, String>> categoryImages2 = [
     {
       'title': 'Mobiles',
@@ -122,8 +123,6 @@ class GlobalVariables {
       String? title = "",
       double? dividerEndIndent}) {
     return AppBar(
-      // title: Text("$title",
-      //     style: appBarTextStyle, maxLines: 1, overflow: TextOverflow.ellipsis),
       title: ScreenTitle(
         title: '$title',
         dividerEndIndent: dividerEndIndent,
@@ -131,7 +130,6 @@ class GlobalVariables {
       iconTheme: const IconThemeData(color: Colors.black),
       automaticallyImplyLeading: true,
       backgroundColor: Colors.white,
-
       actions: wantActions!
           ? [
               Padding(

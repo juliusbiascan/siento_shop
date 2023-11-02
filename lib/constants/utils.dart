@@ -54,16 +54,6 @@ void showErrorSnackBar({
   );
 }
 
-// void showSnackBar(BuildContext context, String msg, Duration passDuration) {
-//   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//     content: Text(msg),
-//     duration: passDuration,
-//     behavior: SnackBarBehavior.floating,
-//     backgroundColor: const Color(0xFF7700C6),
-//     //Text Copied snackbar(in message_card bottomsheet) color : const Color(0xFFA841FC)
-//   ));
-// }
-
 Future<List<File>> pickImages() async {
   List<File> images = [];
 

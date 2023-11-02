@@ -1,10 +1,10 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
 
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/features/admin/models/sales.dart';
-import 'package:siento_shop/common/widgets/color_loader_2.dart';
 import 'package:siento_shop/features/admin/services/admin_services.dart';
 import 'package:siento_shop/features/admin/widgets/sales_graph/sales_graph.dart';
 
@@ -52,7 +52,11 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
         context: context,
       ),
       body: isLoading
-          ? const Center(child: ColorLoader2())
+          ? Center(
+              child: SpinKitFadingCube(
+              color: Theme.of(context).colorScheme.primary,
+              size: 50.0,
+            ))
           : earnings == null || totalSales == null
               ?
               // no sales data available
@@ -82,7 +86,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
-                      Text("Total sales achieved: \$$totalSales",
+                      Text("Total sales achieved: PHP$totalSales",
                           style: const TextStyle(
                               fontSize: 17, fontWeight: FontWeight.w100)),
                       // SizedBox(
@@ -112,65 +116,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
         },
         backgroundColor: Colors.deepPurple.shade600,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        label: Text("LogOut", style: TextStyle(fontSize: 12)),
+        label: const Text("LogOut", style: TextStyle(fontSize: 12)),
       ),
     );
   }
 }
-
- // Center(
-              //     child: Container(
-              //         child: SfCartesianChart(
-              //             // Initialize category axis
-              //             primaryXAxis: CategoryAxis(),
-              //             series: <LineSeries<SalesData, String>>[
-              //       LineSeries<SalesData, String>(
-              //           // Bind data source
-              //           dataSource: <SalesData>[
-              //             SalesData('Jan', 35),
-              //             SalesData('Feb', 28),
-              //             SalesData('Mar', 34),
-              //             SalesData('Apr', 32),
-              //             SalesData('May', 40)
-              //           ],
-              //           xValueMapper: (SalesData sales, _) => sales.year,
-              //           yValueMapper: (SalesData sales, _) => sales.sales)
-              //     ])))
-              // Center(
-              //     child: Container(
-              //         child: SfCartesianChart(
-              //             // backgroundColor: Colors.tealAccent,
-              //             borderColor: Colors.redAccent,
-              //             borderWidth: 2,
-              //             // isTransposed: true,
-              //             margin: EdgeInsets.all(10),
-              //             plotAreaBorderColor: Colors.amberAccent,
-              //             plotAreaBackgroundColor: Colors.brown,
-              //             plotAreaBorderWidth: 5,
-              //             // zoomPanBehaviorColors.greenAccent),
-              //             primaryXAxis: CategoryAxis(),
-              //             // Chart title
-              //             title: ChartTitle(text: 'Half yearly sales analysis'),
-              //             // Enable legend
-              //             legend: Legend(isVisible: true),
-              //             // Enable tooltip
-              //             tooltipBehavior: _tooltipBehavior,
-              //             series: <LineSeries<SalesData, String>>[
-              //       LineSeries<SalesData, String>(
-              //           dataSource: <SalesData>[
-              //             SalesData('Jan', 35),
-              //             SalesData('Feb', 38),
-              //             SalesData('Mar', 36),
-              //             SalesData('Apr', 31),
-              //             SalesData('May', 30.33)
-              //           ],
-              //           xValueMapper: (SalesData sales, _) => sales.year,
-              //           yValueMapper: (SalesData sales, _) => sales.sales,
-              //           // Enable data label
-              //           dataLabelSettings:
-              //               const DataLabelSettings(isVisible: true))
-              //     ]))),
-              // LineChart(
-              //   LineChartData(),
-              // )
-        

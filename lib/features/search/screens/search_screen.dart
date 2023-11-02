@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/global_variables.dart';
-import 'package:siento_shop/common/widgets/color_loader_2.dart';
 import 'package:siento_shop/features/home/widgets/address_box.dart';
 import 'package:siento_shop/features/search/widgets/searched_product.dart';
 import 'package:siento_shop/features/search/services/search_services.dart';
@@ -51,7 +51,10 @@ class _SearchScreenState extends State<SearchScreen> {
           onClickSearchNavigateTo:
               MySearchScreen(searchQueryAlready: widget.searchQuery)),
       body: products == null
-          ? const ColorLoader2()
+          ? SpinKitFadingCube(
+              color: Theme.of(context).colorScheme.primary,
+              size: 50.0,
+            )
           : products!.isEmpty
               ? const Text("No product to display")
               : Column(
