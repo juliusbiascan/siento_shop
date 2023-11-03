@@ -1,19 +1,13 @@
 import 'package:siento_shop/features/home/widgets/address_box.dart';
 import 'package:siento_shop/features/search_delegate/my_search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 import 'package:siento_shop/main.dart';
-import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/features/home/widgets/deal_of_day.dart';
-import 'package:siento_shop/features/home/screens/my_end_drawer.dart';
-import 'package:siento_shop/features/home/widgets/carousel_image.dart';
 import 'package:siento_shop/features/home/services/home_services.dart';
 import 'package:siento_shop/features/home/widgets/top_categories.dart';
 import 'package:siento_shop/features/search/screens/search_screen.dart';
-import 'package:siento_shop/features/home/providers/search_provider.dart';
 
 // Route _createRoute() {
 //   return PageRouteBuilder(
@@ -91,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
             wantBackNavigation: false,
             title: "Home",
             dividerEndIndent: 260,
-            onClickSearchNavigateTo: MySearchScreen()),
+            onClickSearchNavigateTo: const MySearchScreen()),
         //functionalities!
         body: const SingleChildScrollView(
           child: Column(

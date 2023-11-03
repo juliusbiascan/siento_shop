@@ -1,4 +1,3 @@
-import 'package:siento_shop/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

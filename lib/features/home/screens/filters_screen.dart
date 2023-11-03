@@ -6,7 +6,7 @@ import 'package:siento_shop/features/home/providers/filter_provider.dart';
 enum FilterType { atoZ, priceLtoH, priceHtoL }
 
 class FilterScreen extends StatefulWidget {
-  FilterScreen({super.key});
+  const FilterScreen({super.key});
 
   @override
   State<FilterScreen> createState() => _FilterScreenState();
@@ -41,13 +41,13 @@ class _FilterScreenState extends State<FilterScreen> {
       //       onPressed: () => Navigator.of(context).pop(), child: Text("Close"))
       // ]),
       //  ,
-      body: FiltersAvailable(),
+      body: const FiltersAvailable(),
     );
   }
 }
 
 class FiltersAvailable extends StatefulWidget {
-  FiltersAvailable({super.key});
+  const FiltersAvailable({super.key});
 
   @override
   State<FiltersAvailable> createState() => _FiltersAvailableState();

@@ -32,6 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
       TextEditingController();
   // password controller for signIn
   final TextEditingController _passwordSInController = TextEditingController();
+
   bool isSignIn = true;
   double opacityLvl = 1.0;
 

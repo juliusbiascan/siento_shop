@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:siento_shop/features/home/widgets/carousel_image.dart';
-import 'package:siento_shop/features/home/widgets/deal_of_day.dart';
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/utils.dart';
@@ -176,7 +175,7 @@ class _TopCategoriesState extends State<TopCategories>
                               ? const Center(child: Text("No item to fetch"))
                               : GridView.builder(
                                   scrollDirection: Axis.vertical,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
@@ -216,7 +215,7 @@ class _TopCategoriesState extends State<TopCategories>
                                                         arguments: product,
                                                       );
                                                     },
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       // color: Colors.redAccent,
                                                       // width: double.infinity,
                                                       height: mq.height * .15,

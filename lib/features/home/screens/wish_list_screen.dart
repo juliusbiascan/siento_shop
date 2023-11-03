@@ -2,11 +2,9 @@
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/features/search_delegate/my_search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:siento_shop/main.dart';
-import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
 import 'package:siento_shop/features/home/screens/wish_list_product.dart';
@@ -32,7 +30,7 @@ class _WishListScreenState extends State<WishListScreen> {
       appBar: GlobalVariables.getAppBar(
           context: context,
           title: "Your Wishlist",
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: Container(
         alignment: Alignment.center,
         // color: Colors.redAccent,

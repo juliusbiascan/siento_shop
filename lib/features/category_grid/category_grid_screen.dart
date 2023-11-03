@@ -8,9 +8,10 @@ import 'package:siento_shop/features/home/screens/category_deals_screen.dart';
 class CategoryGridScreen extends StatelessWidget {
   CategoryGridScreen({super.key});
 
-  List<Map<String, String>> myCategoryList = GlobalVariables.categoryImages2;
+  final List<Map<String, String>> myCategoryList =
+      GlobalVariables.categoryImages2;
 
-  List<String> productCategories = [
+  final List<String> productCategories = [
     "Mobiles",
     "Essentials",
     "Appliances",
@@ -32,7 +33,7 @@ class CategoryGridScreen extends StatelessWidget {
           wantBackNavigation: false,
           title: "Categories",
           dividerEndIndent: 215,
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: GridView.builder(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.all(mq.height * .01),
@@ -68,7 +69,8 @@ class CategoryGridScreen extends StatelessWidget {
                     categoryTitle!,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
-                    style: TextStyle(fontWeight: FontWeight.w200, fontSize: 16),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w200, fontSize: 16),
                   )
                 ],
               ),

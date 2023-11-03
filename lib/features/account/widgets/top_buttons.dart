@@ -8,7 +8,7 @@ import 'package:siento_shop/features/account/widgets/account_button.dart';
 import 'package:siento_shop/features/account/services/account_services.dart';
 
 class TopButtons extends StatelessWidget {
-  TopButtons({Key? key}) : super(key: key);
+  const TopButtons({Key? key}) : super(key: key);
 
   // final List<String> buttonNames = [
   //   "Your Orders",
@@ -27,8 +27,10 @@ class TopButtons extends StatelessWidget {
             AccountButton(
                 text: "Your Wishlist",
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => WishListScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const WishListScreen()));
                 }),
           ],
         ),

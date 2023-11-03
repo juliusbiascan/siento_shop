@@ -2,10 +2,11 @@ import 'package:siento_shop/features/splash/widgets/body.dart';
 import 'package:siento_shop/main.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class SplashScreen extends StatelessWidget {
   static String routeName = "/splash";
+
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     mq = MediaQuery.of(context).size;

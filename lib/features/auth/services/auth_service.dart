@@ -56,7 +56,7 @@ class AuthService {
       }
     } catch (e) {
       print("Error occured in Signing up user : $e");
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
 
@@ -109,7 +109,7 @@ class AuthService {
       }
     } catch (e) {
       print("Error occured in Signing in user : $e");
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
 
@@ -150,6 +150,10 @@ class AuthService {
             });
         // print(
         //     "==================> User Response Decoded :\n${jsonDecode(userRes.body)['_doc']} <==================");
+        if (!context.mounted) {
+          return;
+        }
+
         var userProvider = Provider.of<UserProvider>(context, listen: false);
 
         // userRes.body return this
@@ -212,7 +216,7 @@ class AuthService {
       }
     } catch (e) {
       print("Error occured in signing up user : $e");
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
 }

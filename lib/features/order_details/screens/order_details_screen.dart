@@ -79,7 +79,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       appBar: GlobalVariables.getAppBar(
           title: "Order Details",
           context: context,
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(mq.width * .025),

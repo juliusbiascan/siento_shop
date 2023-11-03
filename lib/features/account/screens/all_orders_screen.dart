@@ -2,21 +2,18 @@
 import 'package:siento_shop/constants/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/features/order_details/screens/order_details_screen.dart';
-import 'package:siento_shop/features/product_details/screens/product_detail_screen.dart';
 import 'package:siento_shop/features/search_delegate/my_search_screen.dart';
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/order.dart';
 
-import '../../search/widgets/searched_product.dart';
-
 class AllOrdersScreen extends StatefulWidget {
   static const String routeName = '/all-orders-screen';
-  List<Order>? allOrders;
-  AllOrdersScreen({
+  final List<Order>? allOrders;
+
+  const AllOrdersScreen({
     Key? key,
     this.allOrders,
   }) : super(key: key);
@@ -43,7 +40,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
       appBar: GlobalVariables.getAppBar(
           title: "All Orders",
           context: context,
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: ListView.builder(
         scrollDirection: Axis.vertical,
         physics: const BouncingScrollPhysics(),

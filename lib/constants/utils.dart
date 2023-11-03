@@ -44,12 +44,12 @@ void showErrorSnackBar({
               onPressed: onTapFunction,
             ),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Color.fromARGB(255, 252, 30, 100),
+            backgroundColor: const Color.fromARGB(255, 252, 30, 100),
           )
         : SnackBar(
             content: Text(text),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Color.fromARGB(255, 252, 30, 100),
+            backgroundColor: const Color.fromARGB(255, 252, 30, 100),
           ),
   );
 }

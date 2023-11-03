@@ -44,10 +44,12 @@ class SearchServices {
 
       // print("Products length : ${jsonDecode(res.body).length}");
     } catch (e) {
-      showSnackBar(
-          context: context,
-          text:
-              "Following Error in fetching Products [Search] : ${e.toString()}");
+      if (context.mounted) {
+        showSnackBar(
+            context: context,
+            text:
+                "Following Error in fetching Products [Search] : ${e.toString()}");
+      }
     }
     return productList;
   }

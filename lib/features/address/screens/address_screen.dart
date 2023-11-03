@@ -167,7 +167,7 @@ class _AddressScreenState extends State<AddressScreen> {
       child: Scaffold(
         appBar: GlobalVariables.getAppBar(
           context: context,
-          onClickSearchNavigateTo: MySearchScreen(),
+          onClickSearchNavigateTo: const MySearchScreen(),
           title: "Checkout",
         ),
         body: SingleChildScrollView(

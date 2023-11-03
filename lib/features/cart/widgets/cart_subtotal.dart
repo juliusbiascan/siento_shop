@@ -19,13 +19,13 @@ class CartSubtotal extends StatelessWidget {
       margin: EdgeInsets.all(mq.width * .025),
       child: Row(
         children: [
-          Text(
+          const Text(
             "Subtotal ",
             style: TextStyle(fontSize: 18),
           ),
           Text(
             "PHP ${sum.toStringAsFixed(2)}",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
         ],
       ),

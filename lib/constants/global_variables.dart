@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:siento_shop/common/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:siento_shop/main.dart';
 
-//String uri = 'https://lively-pike-tux.cyclic.app';
-String uri = kIsWeb ? 'http://localhost:3000' : 'http://10.0.2.2:3000';
+String uri = 'https://lively-pike-tux.cyclic.app';
+//String uri = kIsWeb ? 'http://localhost:3000' : 'http://10.0.2.2:3000';
 
 class GlobalVariables {
   // COLORS

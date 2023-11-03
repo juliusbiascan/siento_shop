@@ -36,7 +36,6 @@ class ProductDetailServices {
     required BuildContext context,
     required Product product,
   }) async {
-    print("========> Inside the add to cart function");
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
       // var bodyData = {"id": "${product.id}"};
@@ -59,8 +58,6 @@ class ProductDetailServices {
       //   },
       //   body: jsonEncode({'id': product.id!}),
       // );
-      print(
-          "\n\nuser token after http post request: ===> ${userProvider.user.token} ");
 
       // print("\nPost request sent successfully...");
 
@@ -70,17 +67,14 @@ class ProductDetailServices {
           response: res,
           context: context,
           onSuccess: () {
-            print("\nInside on success method..");
             User user =
                 userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
             userProvider.setUserFromModel(user);
-            print("\nUser cart now is ${user.cart}");
           },
         );
       }
     } catch (e) {
-      print("\n========>Inside the catch block");
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
 
@@ -158,7 +152,7 @@ class ProductDetailServices {
         );
       }
     } catch (e) {
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
 }

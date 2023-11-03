@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:siento_shop/models/user.dart';
 
 class MyEndDrawer extends StatefulWidget {
-  User user;
-  MyEndDrawer({super.key, required this.user});
+  final User user;
+  const MyEndDrawer({super.key, required this.user});
 
   @override
   State<MyEndDrawer> createState() => _MyEndDrawerState();

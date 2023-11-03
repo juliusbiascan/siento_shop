@@ -1,7 +1,6 @@
 import 'package:siento_shop/features/home/providers/search_provider.dart';
 import 'package:siento_shop/features/home/services/home_services.dart';
 import 'package:siento_shop/main.dart';
-import 'package:siento_shop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:siento_shop/features/search/screens/search_screen.dart';
 import 'package:provider/provider.dart';
@@ -9,8 +8,8 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class MySearchScreen extends StatefulWidget {
-  String? searchQueryAlready;
-  MySearchScreen({this.searchQueryAlready, super.key});
+  final String? searchQueryAlready;
+  const MySearchScreen({this.searchQueryAlready, super.key});
 
   @override
   State<MySearchScreen> createState() => _MySearchScreenState();
@@ -46,8 +45,7 @@ class _MySearchScreenState extends State<MySearchScreen> {
   // maximum 10 items stored in history
   int maxLength = 10;
 
-  SpeechToText _speechToText = SpeechToText();
-  bool _speechEnabled = false;
+  final SpeechToText _speechToText = SpeechToText();
   String _lastWords = '';
 
   makeSuggestionList() async {
@@ -95,7 +93,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
 
   /// This has to happen only once per app
   void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize();
     setState(() {});
   }
 
@@ -125,7 +122,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
     final searchProvider = Provider.of<SearchProvider>(context, listen: true);
     // add and remove from buildSuggestionsList according to the search query in onChange
     List<String>? buildSuggestionsList = searchProvider.getSuggetions;
@@ -218,8 +214,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
                     _searchController.clear();
                     navigateToSearchScreen(val.trim());
                   }
-
-                  print("\n\n\nHistory now  -----------> :  $historyList");
                 },
                 autofocus: true,
                 // enabled: true,
@@ -301,7 +295,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
 
                         navigateToSearchScreen(listTitle);
 
-                        /*
                         // print(
                         //     "\nQuery to be searched ====>  ${searchHistoryList![index]}");
                         // navigateToSearchScreen(listTitle);
@@ -345,7 +338,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
 
                         // isSearchOn = false;
                         // searchController.clear();
-                        */
                       },
                       title: Text(listTitle,
                           maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -570,7 +562,7 @@ class _MySearchScreenState extends State<MySearchScreen> {
             width: 40,
             child: FloatingActionButton(
               elevation: 0,
-              backgroundColor: Color.fromARGB(255, 43, 6, 103),
+              backgroundColor: const Color.fromARGB(255, 43, 6, 103),
               onPressed:
                   // If not yet listening for speech start, otherwise stop
                   _speechToText.isNotListening

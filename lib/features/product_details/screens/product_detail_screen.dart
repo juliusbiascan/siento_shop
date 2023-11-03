@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-import 'package:siento_shop/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -54,15 +51,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   void navigateToSearchScreen(String query) {
     //make sure to pass the arguments here!
-
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
   void addToCart() {
-    print("Triggered add to cart <====");
-    print("Product is  : ${widget.product.name}");
     productDetailServices.addToCart(context: context, product: widget.product);
-    print("Execution finished add to cart <====");
   }
 
   @override
@@ -70,7 +63,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     bool isProductAvailable = widget.product.quantity == 0;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
-          context: context, onClickSearchNavigateTo: MySearchScreen()),
+          context: context, onClickSearchNavigateTo: const MySearchScreen()),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: mq.width * .03)
@@ -86,7 +79,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       SizedBox(
                         height: mq.height * .3,
                         child: PageView.builder(
-                            physics: BouncingScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             onPageChanged: (value) {
                               setState(() {
                                 currentIndex = value;

@@ -17,13 +17,13 @@ class AccountScreen extends StatelessWidget {
           context: context,
           wantBackNavigation: false,
           title: "Me",
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: Column(
         children: [
           SizedBox(height: mq.width * .025),
           const BelowAppBar(),
           SizedBox(height: mq.width * .025),
-          TopButtons(),
+          const TopButtons(),
           SizedBox(height: mq.width * .045),
           const Orders(),
         ],

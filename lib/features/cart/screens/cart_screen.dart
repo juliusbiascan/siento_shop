@@ -48,7 +48,7 @@ class _CartScreenState extends State<CartScreen> {
           wantBackNavigation: false,
           title: "Cart",
           dividerEndIndent: 280,
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: SingleChildScrollView(
         child: Column(
           children: [

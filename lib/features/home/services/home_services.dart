@@ -55,9 +55,11 @@ class HomeServices {
         // print("quantity type : \n\n${productList[0].quantity.runtimeType}");
       }
     } catch (e) {
-      showSnackBar(
-          context: context,
-          text: "Following Error in fetching Products [home]: $e");
+      if (context.mounted) {
+        showSnackBar(
+            context: context,
+            text: "Following Error in fetching Products [home]: $e");
+      }
     }
     return productList;
   }
@@ -103,9 +105,11 @@ class HomeServices {
         );
       }
     } catch (e) {
-      showSnackBar(
-          context: context,
-          text: "Following Error in fetching deal-of-the-day : $e");
+      if (context.mounted) {
+        showSnackBar(
+            context: context,
+            text: "Following Error in fetching deal-of-the-day : $e");
+      }
     }
     return product;
   }
@@ -148,7 +152,7 @@ class HomeServices {
         );
       }
     } catch (e) {
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
     return productNames;
   }
@@ -187,13 +191,14 @@ class HomeServices {
             User user =
                 userProvider.user.copyWith(searchHistory: searchHistoryFromDB);
             userProvider.setUserFromModel(user);
-            print("\nUser searchHistory now is ${user.searchHistory}");
           },
         );
       }
     } catch (e) {
-      showSnackBar(
-          context: context, text: "Error in addToHistory ${e.toString()}");
+      if (context.mounted) {
+        showSnackBar(
+            context: context, text: "Error in addToHistory ${e.toString()}");
+      }
     }
   }
 
@@ -228,9 +233,11 @@ class HomeServices {
         );
       }
     } catch (e) {
-      showSnackBar(
-          context: context,
-          text: "Error in delete search history item ${e.toString()}");
+      if (context.mounted) {
+        showSnackBar(
+            context: context,
+            text: "Error in delete search history item ${e.toString()}");
+      }
     }
   }
 
@@ -275,7 +282,7 @@ class HomeServices {
         );
       }
     } catch (e) {
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
     return searchHistoryList;
   }
@@ -289,7 +296,6 @@ class HomeServices {
     required BuildContext context,
     required Product product,
   }) async {
-    print("========> Inside the add to /api/add-to-wishList function");
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
       http.Response res = await http.post(
@@ -300,7 +306,6 @@ class HomeServices {
         },
         body: jsonEncode({'id': product.id}),
       );
-      print("\nwishList   :  ${userProvider.user.wishList} ");
 
       if (context.mounted) {
         httpErrorHandle(
@@ -311,13 +316,11 @@ class HomeServices {
             User user = userProvider.user
                 .copyWith(wishList: jsonDecode(res.body)['wishList']);
             userProvider.setUserFromModel(user);
-            print("\nUser wishList now is ${user.wishList}");
           },
         );
       }
     } catch (e) {
-      print("\n========>Inside the catch block");
-      showSnackBar(context: context, text: e.toString());
+      if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
 }

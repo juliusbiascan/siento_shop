@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -73,7 +74,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
           context: context,
           wantBackNavigation: true,
           title: "All results in ${widget.category}",
-          onClickSearchNavigateTo: MySearchScreen()),
+          onClickSearchNavigateTo: const MySearchScreen()),
       body: productList == null
           ? SpinKitFadingCube(
               color: Theme.of(context).colorScheme.primary,
@@ -112,8 +113,8 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                     const Spacer(),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context)
-                            .push(GlobalVariables.createRoute(FilterScreen()));
+                        Navigator.of(context).push(
+                            GlobalVariables.createRoute(const FilterScreen()));
                       },
                       child: const Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -143,14 +144,18 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                                   itemCount: productList!.length,
                                   itemBuilder: (context, index) {
                                     var map = productList!;
-                                    // print(
-                                    //     "Type of productlist.....................${map[index].}");
+                                    if (kDebugMode) {
+                                      print(
+                                          "Type of productlist.....................${map[index]}");
+                                    }
 
                                     // productList!
                                     //     .sort((a, b) => a.brandName.contains("d"));
 
-                                    print(
-                                        "product list now..............${productList![index].name}, ");
+                                    if (kDebugMode) {
+                                      print(
+                                          "product list now..............${productList![index].name}, ");
+                                    }
                                     // var sortedByKeyMap = Map.fromEntries(map.entries.toList()
                                     //   ..sort((e1, e2) => e1.key.compareTo(e2.key)));
                                     return Column(
