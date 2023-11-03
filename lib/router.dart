@@ -1,18 +1,18 @@
-import 'package:siento_shop/features/account/screens/all_orders_screen.dart';
-import 'package:siento_shop/features/cart/screens/cart_screen.dart';
+import 'package:siento_shop/pages/account/screens/all_orders_screen.dart';
+import 'package:siento_shop/pages/cart/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
-import 'package:siento_shop/features/home/screens/home_screen.dart';
-import 'package:siento_shop/features/auth/screens/auth_screen.dart';
-import 'package:siento_shop/features/search/screens/search_screen.dart';
-import 'package:siento_shop/features/address/screens/address_screen.dart';
-import 'package:siento_shop/features/admin/screens/add_product_screen.dart';
-import 'package:siento_shop/features/home/screens/category_deals_screen.dart';
-import 'package:siento_shop/features/order_details/screens/order_details_screen.dart';
-import 'package:siento_shop/features/product_details/screens/product_detail_screen.dart';
+import 'package:siento_shop/pages/home/screens/home_screen.dart';
+import 'package:siento_shop/pages/auth/screens/auth_screen.dart';
+import 'package:siento_shop/pages/search/screens/search_screen.dart';
+import 'package:siento_shop/pages/address/screens/address_screen.dart';
+import 'package:siento_shop/pages/admin/screens/add_product_screen.dart';
+import 'package:siento_shop/pages/home/screens/category_deals_screen.dart';
+import 'package:siento_shop/pages/order_details/screens/order_details_screen.dart';
+import 'package:siento_shop/pages/product_details/screens/product_detail_screen.dart';
 
 //all routes of the application
 Route<dynamic> generateRoute(RouteSettings routeSettings) {

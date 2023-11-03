@@ -5,10 +5,10 @@ import 'package:badges/badges.dart' as badges;
 import 'package:siento_shop/main.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/constants/global_variables.dart';
-import 'package:siento_shop/features/cart/screens/cart_screen.dart';
-import 'package:siento_shop/features/home/screens/home_screen.dart';
-import 'package:siento_shop/features/account/screens/account_screen.dart';
-import 'package:siento_shop/features/category_grid/category_grid_screen.dart';
+import 'package:siento_shop/pages/cart/screens/cart_screen.dart';
+import 'package:siento_shop/pages/home/screens/home_screen.dart';
+import 'package:siento_shop/pages/account/screens/account_screen.dart';
+import 'package:siento_shop/pages/category_grid/category_grid_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = "/actual-home";

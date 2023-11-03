@@ -5,11 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:siento_shop/router.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
-import 'package:siento_shop/features/auth/screens/auth_screen.dart';
-import 'package:siento_shop/features/admin/screens/admin_screen.dart';
-import 'package:siento_shop/features/auth/services/auth_service.dart';
-import 'package:siento_shop/features/home/providers/search_provider.dart';
-import 'package:siento_shop/features/home/providers/filter_provider.dart';
+import 'package:siento_shop/pages/auth/screens/auth_screen.dart';
+import 'package:siento_shop/pages/admin/screens/admin_screen.dart';
+import 'package:siento_shop/pages/auth/services/auth_service.dart';
+import 'package:siento_shop/pages/home/providers/search_provider.dart';
+import 'package:siento_shop/pages/home/providers/filter_provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
