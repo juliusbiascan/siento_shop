@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +8,7 @@ import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/pages/admin/services/admin_services.dart';
 import 'package:siento_shop/pages/search/screens/search_screen.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
-import 'package:siento_shop/main.dart';
+
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 
@@ -73,7 +72,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     daysBetween(dateOfPurchase, presentDate) <= allowReturnProductDays
         ? allowReturn = true
         : allowReturn = false;
-
+    Size mq = MediaQuery.of(context).size;
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
@@ -120,8 +119,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 ),
                                 Text(
                                   "Qty : ${widget.order.quantity[i]}",
-                                  // style: TextStyle(
-                                  //     fontSize: 17, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
                                 )
                               ],
                             ),

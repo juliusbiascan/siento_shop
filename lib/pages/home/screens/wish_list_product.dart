@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/providers/user_provider.dart';
@@ -26,7 +25,7 @@ class _WishListProductState extends State<WishListProduct> {
         ? []
         : context.watch<UserProvider>().user.wishList![widget.index];
     final product = Product.fromJson(productWishList['product']);
-
+    Size mq = MediaQuery.of(context).size;
     return Column(
       children: [
         Container(

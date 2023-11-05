@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -19,26 +20,27 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: Colors.black,
       controller: controller,
       maxLines: maxLines,
       obscureText: isObscureText!,
       keyboardType: inputType,
+      style: GoogleFonts.lato(
+        fontSize: 18,
+        fontWeight: FontWeight.w800,
+      ),
       decoration: InputDecoration(
-        filled: true,
-        fillColor: const Color.fromARGB(255, 236, 236, 236),
-        hintText: hintText,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+        contentPadding: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(90.0)),
           borderSide: BorderSide.none,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(width: 0.8, color: Colors.grey.shade800),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(width: 0.25),
+        filled: true,
+        fillColor: Colors.grey[350],
+        hintText: hintText,
+        hintStyle: GoogleFonts.lato(
+          color: Colors.black26,
+          fontSize: 18,
+          fontWeight: FontWeight.w800,
         ),
       ),
       validator: (val) {

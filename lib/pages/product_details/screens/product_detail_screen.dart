@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/providers/user_provider.dart';
@@ -61,6 +60,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     bool isProductAvailable = widget.product.quantity == 0;
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           context: context, onClickSearchNavigateTo: const MySearchScreen()),
@@ -266,6 +266,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   AlertDialog rateProductDialog() {
+    Size mq = MediaQuery.of(context).size;
     return AlertDialog(
       title: const Text(
         "Drag your finger to rate",

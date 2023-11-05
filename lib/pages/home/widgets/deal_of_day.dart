@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/pages/home/services/home_services.dart';
 import 'package:siento_shop/pages/product_details/screens/product_detail_screen.dart';
@@ -35,6 +34,7 @@ class _DealOfDayState extends State<DealOfDay> {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return product == null
         ? SpinKitWave(
             color: Theme.of(context).colorScheme.primary,

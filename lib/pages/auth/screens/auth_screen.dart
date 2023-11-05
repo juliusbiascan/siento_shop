@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/common/widgets/custom_textfield.dart';
@@ -11,6 +10,7 @@ enum Auth { signin, signup }
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth-screen';
+
   const AuthScreen({super.key});
 
   @override
@@ -64,15 +64,13 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-    mq = MediaQuery.of(context).size;
-    myTextTheme = Theme.of(context).textTheme;
-
+    Size mq = MediaQuery.of(context).size;
     return isSignIn
         ? GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
-              // resizeToAvoidBottomInset: false,
-              // backgroundColor: GlobalVariables.greyBackgroundColor,
+              resizeToAvoidBottomInset: false,
+              backgroundColor: GlobalVariables.greyBackgroundColor,
               body: SafeArea(
                 child: Container(
                   height: mq.height,
@@ -82,13 +80,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(mq.width * .1),
                     child: SingleChildScrollView(
-                      // reverse: true,
+                      reverse: false,
                       physics: const ClampingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       child: Form(
                         key: _signInFormKey,
                         child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(20),
@@ -98,7 +96,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               ),
                             ),
                             SizedBox(height: mq.height * .03),
-                            const Text("Welcome to SientoShop",
+                            const Text("Welcome to Siento Shop",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500, fontSize: 25)),
                             SizedBox(height: mq.height * .05),
@@ -110,7 +108,6 @@ class _AuthScreenState extends State<AuthScreen> {
                                 isObscureText: true,
                                 controller: _passwordSInController,
                                 hintText: "Password"),
-                            SizedBox(height: mq.height * .01),
                             SizedBox(height: mq.height * .04),
                             AnimatedOpacity(
                               opacity: opacityLvl,
@@ -125,21 +122,25 @@ class _AuthScreenState extends State<AuthScreen> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
-                                    minimumSize:
-                                        Size(mq.width, mq.height * 0.08),
-                                    backgroundColor: Colors.orange.shade700),
-                                child: const Text("Sign In"),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                  minimumSize: Size(mq.width, mq.height * 0.08),
+                                ),
+                                child: Text(
+                                  "SIGN IN",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .copyWith(color: Colors.white),
+                                ),
                               ),
                             ),
                             SizedBox(height: mq.height * .015),
-                            // Divider(thickness: 3, color: Colors.grey.shade300),
+                            Divider(thickness: 3, color: Colors.grey.shade300),
                             SizedBox(height: mq.height * .015),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              // crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 const Text("Don't have an account?",
                                     style: TextStyle(
@@ -152,13 +153,11 @@ class _AuthScreenState extends State<AuthScreen> {
                                       isSignIn = !isSignIn;
                                     });
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Sign Up",
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.orange.shade800,
-                                        decoration: TextDecoration.underline,
                                         decorationStyle:
                                             TextDecorationStyle.solid),
                                   ),
@@ -177,9 +176,8 @@ class _AuthScreenState extends State<AuthScreen> {
         : GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
-              // resizeToAvoidBottomInset: false,
-
-              // backgroundColor: GlobalVariables.greyBackgroundColor,
+              resizeToAvoidBottomInset: false,
+              backgroundColor: GlobalVariables.greyBackgroundColor,
               body: SafeArea(
                 child: Container(
                   height: mq.height,
@@ -189,13 +187,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(mq.width * .1),
                     child: SingleChildScrollView(
-                      // reverse: true,
+                      reverse: true,
                       physics: const ClampingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       child: Form(
                         key: _signUpFormKey,
                         child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(20),
@@ -246,19 +244,23 @@ class _AuthScreenState extends State<AuthScreen> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
-                                    minimumSize:
-                                        Size(mq.width, mq.height * 0.08),
-                                    backgroundColor: Colors.orange.shade700),
-                                child: const Text("Sign Up")),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                  minimumSize: Size(mq.width, mq.height * 0.08),
+                                ),
+                                child: Text(
+                                  "REGISTER",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .copyWith(color: Colors.white),
+                                )),
                             SizedBox(height: mq.height * .015),
                             // Divider(thickness: 3, color: Colors.grey.shade300),
                             SizedBox(height: mq.height * .015),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              // crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 const Text("Already have an account?",
                                     style: TextStyle(
@@ -271,13 +273,11 @@ class _AuthScreenState extends State<AuthScreen> {
                                       isSignIn = !isSignIn;
                                     });
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Sign in",
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.orange.shade800,
-                                        decoration: TextDecoration.underline,
                                         decorationStyle:
                                             TextDecorationStyle.solid),
                                   ),
@@ -312,11 +312,12 @@ Widget signInScreen({
   required TextEditingController passwordController,
   required VoidCallback signInUser,
 }) {
+  Size mq = MediaQuery.of(context).size;
   return GestureDetector(
     onTap: () => FocusScope.of(context).unfocus(),
     child: Scaffold(
-      // resizeToAvoidBottomInset: false,
-      // backgroundColor: GlobalVariables.greyBackgroundColor,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: GlobalVariables.greyBackgroundColor,
       body: SafeArea(
         child: Container(
           height: mq.height,

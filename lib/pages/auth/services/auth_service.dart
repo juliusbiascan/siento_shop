@@ -1,17 +1,14 @@
-// import 'package:flutter/material.dart';
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '/providers/user_provider.dart';
-import '/common/widgets/bottom_bar.dart';
-import '/constants/global_variables.dart';
-import '/constants/error_handling.dart';
-import '/constants/utils.dart';
-import '/models/user.dart';
+import 'package:siento_shop/providers/user_provider.dart';
+import 'package:siento_shop/common/widgets/bottom_bar.dart';
+import 'package:siento_shop/constants/global_variables.dart';
+import 'package:siento_shop/constants/error_handling.dart';
+import 'package:siento_shop/constants/utils.dart';
+import 'package:siento_shop/models/user.dart';
 
 class AuthService {
   //signing up user
@@ -22,7 +19,6 @@ class AuthService {
     required String name,
   }) async {
     try {
-      print("<============= signUpUser called ===============>");
       User user = User(
         id: '',
         name: name,
@@ -55,7 +51,6 @@ class AuthService {
             });
       }
     } catch (e) {
-      print("Error occured in Signing up user : $e");
       if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
@@ -80,7 +75,6 @@ class AuthService {
 
       //dont use context across asynchronous gaps
       if (context.mounted) {
-        print("Response.body in signIn ${res.body}");
         httpErrorHandle(
           response: res,
           context: context,
@@ -108,7 +102,6 @@ class AuthService {
         );
       }
     } catch (e) {
-      print("Error occured in Signing in user : $e");
       if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }
@@ -215,7 +208,6 @@ class AuthService {
         //     "==================> User Response :\n${userProvider.user.name} <==================");
       }
     } catch (e) {
-      print("Error occured in signing up user : $e");
       if (context.mounted) showSnackBar(context: context, text: e.toString());
     }
   }

@@ -4,7 +4,6 @@ import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
 import 'package:siento_shop/pages/home/screens/wish_list_product.dart';
@@ -25,7 +24,7 @@ class _WishListScreenState extends State<WishListScreen> {
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
     // List<dynamic>? wishList = userProvider.user.wishList;
-
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           context: context,

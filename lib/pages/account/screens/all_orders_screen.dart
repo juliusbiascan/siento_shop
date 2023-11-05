@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/order_details/screens/order_details_screen.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/order.dart';
 
 class AllOrdersScreen extends StatefulWidget {
@@ -36,6 +35,7 @@ class AllOrdersScreen extends StatefulWidget {
 class _AllOrdersScreenState extends State<AllOrdersScreen> {
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           title: "All Orders",

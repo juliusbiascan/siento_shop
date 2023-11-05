@@ -1,4 +1,3 @@
-import 'package:siento_shop/main.dart';
 import 'package:flutter/material.dart';
 
 class SplashContent extends StatelessWidget {
@@ -11,6 +10,7 @@ class SplashContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Column(
       children: <Widget>[
         const Spacer(),

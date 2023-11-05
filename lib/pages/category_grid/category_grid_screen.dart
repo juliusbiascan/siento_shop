@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
 import 'package:siento_shop/pages/home/screens/category_deals_screen.dart';
@@ -26,6 +25,7 @@ class CategoryGridScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: GlobalVariables.getAppBar(

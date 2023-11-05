@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:siento_shop/main.dart';
+
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/common/widgets/stars.dart';
 
@@ -25,7 +25,7 @@ class SearchedProduct extends StatelessWidget {
     if (totalRating != 0) {
       avgRating = totalRating / product.rating!.length;
     }
-
+    Size mq = MediaQuery.of(context).size;
     return Column(
       children: [
         Card(

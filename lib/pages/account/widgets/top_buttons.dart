@@ -2,7 +2,6 @@
 import 'package:siento_shop/pages/home/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/pages/cart/screens/cart_screen.dart';
 import 'package:siento_shop/pages/account/widgets/account_button.dart';
 import 'package:siento_shop/pages/account/services/account_services.dart';
@@ -19,6 +18,7 @@ class TopButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Column(
       children: [
         Row(

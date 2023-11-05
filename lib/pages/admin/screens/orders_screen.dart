@@ -2,7 +2,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/account/services/account_services.dart';
 import 'package:flutter/material.dart';
-import 'package:siento_shop/main.dart';
+
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/pages/admin/services/admin_services.dart';
 import 'package:siento_shop/pages/account/widgets/single_product.dart';
@@ -32,6 +32,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAdminAppBar(
         title: "Orders",

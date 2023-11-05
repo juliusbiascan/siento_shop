@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:siento_shop/constants/global_variables.dart';
-import 'package:siento_shop/main.dart';
 import 'package:flutter/material.dart';
 
 class CarouselImage extends StatelessWidget {
@@ -8,6 +7,7 @@ class CarouselImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return CarouselSlider(
       items: GlobalVariables.carouselImages.map((imageUrl) {
         return Builder(

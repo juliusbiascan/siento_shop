@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
-
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/cart/screens/cart_screen.dart';
@@ -35,6 +33,9 @@ class _BottomBarState extends State<BottomBar> {
       _page = page;
     });
   }
+
+  late Size mq;
+  late TextTheme myTextTheme;
 
   @override
   Widget build(BuildContext context) {

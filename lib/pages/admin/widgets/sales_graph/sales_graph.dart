@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/pages/admin/widgets/sales_graph/sales_data.dart';
 
 class SalesGraph extends StatelessWidget {
@@ -19,7 +18,7 @@ class SalesGraph extends StatelessWidget {
     );
 
     mySalesData.initializeBar();
-
+    Size mq = MediaQuery.of(context).size;
     return BarChart(
       swapAnimationCurve: Curves.ease,
       swapAnimationDuration: const Duration(seconds: 1),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
 import 'package:siento_shop/constants/global_variables.dart';
@@ -41,7 +40,7 @@ class _CartScreenState extends State<CartScreen> {
     user.cart
         .map((e) => sum += e['quantity'] * e['product']['price'] as num)
         .toList();
-
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           context: context,

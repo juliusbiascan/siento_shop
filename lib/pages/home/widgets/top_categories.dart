@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:siento_shop/pages/home/widgets/carousel_image.dart';
-import 'package:siento_shop/main.dart';
+
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/constants/global_variables.dart';
@@ -73,7 +73,7 @@ class _TopCategoriesState extends State<TopCategories>
 
   @override
   Widget build(BuildContext context) {
-    mq = MediaQuery.of(context).size;
+    Size mq = MediaQuery.of(context).size;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

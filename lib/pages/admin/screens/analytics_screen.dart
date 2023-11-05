@@ -3,7 +3,6 @@ import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/account/services/account_services.dart';
 import 'package:flutter/material.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/pages/admin/models/sales.dart';
 import 'package:siento_shop/pages/admin/services/admin_services.dart';
 import 'package:siento_shop/pages/admin/widgets/sales_graph/sales_graph.dart';
@@ -46,6 +45,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   Widget build(BuildContext context) {
     // print("Earnings list<Sales> is \n\n${earnings![0].earning}");
     // return Center(child: ColorLoader3());
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAdminAppBar(
         title: "Analytics",

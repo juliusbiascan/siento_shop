@@ -3,7 +3,7 @@ import 'package:siento_shop/common/widgets/custom_button.dart';
 import 'package:siento_shop/pages/admin/screens/admin_screen.dart';
 import 'package:siento_shop/pages/auth/screens/auth_screen.dart';
 import 'package:siento_shop/pages/splash/widgets/splash_content.dart';
-import 'package:siento_shop/main.dart';
+
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +37,7 @@ class _BodyState extends State<Body> {
   ];
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return SafeArea(
       child: SizedBox(
         width: double.infinity,

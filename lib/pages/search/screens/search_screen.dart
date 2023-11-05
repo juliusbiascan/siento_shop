@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/home/widgets/address_box.dart';
@@ -43,6 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           context: context,

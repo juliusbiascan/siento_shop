@@ -4,7 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:siento_shop/pages/home/widgets/address_box.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/home/services/home_services.dart';
@@ -68,7 +67,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
   @override
   Widget build(BuildContext context) {
     final filterProvider = Provider.of<FilterProvider>(context);
-
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           context: context,
@@ -260,7 +259,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
   getFilterNameList(FilterProvider filterProvider) {
     List<Product>? filterOneList = productList;
     filterOneList!.sort((a, b) => a.brandName.compareTo(b.brandName));
-
+    Size mq = MediaQuery.of(context).size;
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.vertical,

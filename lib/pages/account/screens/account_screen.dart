@@ -5,13 +5,13 @@ import 'package:siento_shop/pages/account/widgets/below_app_bar.dart';
 import 'package:siento_shop/pages/account/widgets/orders.dart';
 import 'package:siento_shop/pages/account/widgets/top_buttons.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
-import 'package:siento_shop/main.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAppBar(
           context: context,

@@ -1,6 +1,5 @@
 import 'package:siento_shop/pages/home/providers/search_provider.dart';
 import 'package:siento_shop/pages/home/services/home_services.dart';
-import 'package:siento_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:siento_shop/pages/search/screens/search_screen.dart';
 import 'package:provider/provider.dart';
@@ -126,6 +125,7 @@ class _MySearchScreenState extends State<MySearchScreen> {
     // add and remove from buildSuggestionsList according to the search query in onChange
     List<String>? buildSuggestionsList = searchProvider.getSuggetions;
     // final searchProvider = Provider.of<SearchProvider>(context, listen: true);
+    Size mq = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {},
       child: Scaffold(

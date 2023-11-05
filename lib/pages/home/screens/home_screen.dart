@@ -2,7 +2,6 @@ import 'package:siento_shop/pages/home/widgets/address_box.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/home/widgets/deal_of_day.dart';
 import 'package:siento_shop/pages/home/services/home_services.dart';
@@ -75,7 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
     // print("\n\n==========> Product Names are : $productNames");
     // print("\n\n==========> _searchHistoryList : $searchHistoryList");
 
-    mq = MediaQuery.of(context).size;
     return SafeArea(
       top: false,
       child: Scaffold(

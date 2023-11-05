@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
 import 'package:siento_shop/constants/global_variables.dart';
@@ -45,6 +44,7 @@ class _OrdersState extends State<Orders> {
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Column(
       children: [
         Row(

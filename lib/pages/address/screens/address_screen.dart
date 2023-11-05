@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/common/widgets/bottom_bar.dart';
@@ -161,7 +160,7 @@ class _AddressScreenState extends State<AddressScreen> {
     var address = user.address;
 
     // var address = context.watch<UserProvider>().user.address;
-
+    Size mq = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(

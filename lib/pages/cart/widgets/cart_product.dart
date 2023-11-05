@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/models/product.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/pages/cart/services/cart_services.dart';
@@ -33,7 +32,7 @@ class _CartProductState extends State<CartProduct> {
     final productCart = context.watch<UserProvider>().user.cart[widget.index];
     final product = Product.fromJson(productCart['product']);
     final quantity = productCart['quantity'];
-
+    Size mq = MediaQuery.of(context).size;
     return Column(
       children: [
         Container(

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/common/widgets/loader.dart';
 import 'package:siento_shop/constants/global_variables.dart';
@@ -96,6 +95,7 @@ Color
 
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: GlobalVariables.getAdminAppBar(
           context: context, title: "Add a product"),
@@ -227,7 +227,7 @@ Color
 // import 'package:dotted_border/dotted_border.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 
-// import 'package:siento_shop/main.dart';
+// 
 // import 'package:siento_shop/constants/utils.dart';
 // import 'package:siento_shop/common/widgets/loader.dart';
 // import 'package:siento_shop/constants/global_variables.dart';

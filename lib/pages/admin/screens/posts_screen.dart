@@ -1,7 +1,7 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/constants/utils.dart';
-import 'package:siento_shop/main.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:siento_shop/models/product.dart';
@@ -45,6 +45,7 @@ class _PostsScreenState extends State<PostsScreen> {
   //check whats the issue
   @override
   Widget build(BuildContext context) {
+    Size mq = MediaQuery.of(context).size;
     return products == null
         ? const Loader()
         : Scaffold(

@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/pages/account/services/account_services.dart';
 
@@ -22,13 +20,13 @@ class _BelowAppBarState extends State<BelowAppBar> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
+    Size mq = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.only(
         left: mq.width * .035,
         right: mq.width * .025,
         bottom: mq.width * .025,
       ),
-      // decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -61,14 +59,6 @@ class _BelowAppBarState extends State<BelowAppBar> {
                       : NetworkImage(user.imageUrl!),
                 ),
               ),
-              // CircleAvatar(
-              //   backgroundColor: Colors.deepPurpleAccent,
-              //   radius: 25,
-              //   child: user.imageUrl == null || user.imageUrl == ""
-              //       ? Image.network(
-              //           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnWaCAfSN08VMtSjYBj0QKSfHk4-fjJZCOxgHLPuBSAw&s")
-              //       : Image.network(user.imageUrl!),
-              // ),
               InkWell(
                 onTap: () {
                   _showBottomSheet();
@@ -92,6 +82,7 @@ class _BelowAppBarState extends State<BelowAppBar> {
   }
 
   void _showBottomSheet() {
+    Size mq = MediaQuery.of(context).size;
     showModalBottomSheet(
         context: context,
         shape: const RoundedRectangleBorder(
@@ -114,19 +105,20 @@ class _BelowAppBarState extends State<BelowAppBar> {
                     borderRadius: BorderRadius.circular(mq.width * 0.01)),
               ),
               SizedBox(height: mq.height * 0.01),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              const Text("Pick Profile Photo",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-              // SizedBox(width: mq.width * 0.02),
-              //tooltip suggesting maximum file size 100KB
-              // const Tooltip(
-              //     message: "Maximum File Size is 100KB",
-              //     child: Icon(Icons.info_rounded))
-              // ],
-              // ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Pick Profile Photo",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                  SizedBox(width: mq.width * 0.02),
+                  //tooltip suggesting maximum file size 100KB
+                  const Tooltip(
+                      message: "Maximum File Size is 100KB",
+                      child: Icon(Icons.info_rounded))
+                ],
+              ),
               SizedBox(height: mq.height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

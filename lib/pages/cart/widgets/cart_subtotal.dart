@@ -1,4 +1,3 @@
-import 'package:siento_shop/main.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +13,7 @@ class CartSubtotal extends StatelessWidget {
     user.cart
         .map((e) => sum += e['quantity'] * e['product']['price'] as num)
         .toList();
-
+    Size mq = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.all(mq.width * .025),
       child: Row(
