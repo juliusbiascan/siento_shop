@@ -562,7 +562,7 @@ class _MySearchScreenState extends State<MySearchScreen> {
             width: 40,
             child: FloatingActionButton(
               elevation: 0,
-              backgroundColor: const Color.fromARGB(255, 43, 6, 103),
+              backgroundColor: Theme.of(context).primaryColor,
               onPressed:
                   // If not yet listening for speech start, otherwise stop
                   _speechToText.isNotListening

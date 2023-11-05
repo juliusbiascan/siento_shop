@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/models/product.dart';
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
+import 'package:siento_shop/components/widgets/bottom_bar.dart';
 import 'package:siento_shop/pages/home/screens/home_screen.dart';
 import 'package:siento_shop/pages/auth/screens/auth_screen.dart';
 import 'package:siento_shop/pages/search/screens/search_screen.dart';

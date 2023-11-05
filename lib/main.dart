@@ -1,15 +1,16 @@
-import 'package:siento_shop/common/theme/my_theme.dart';
+import 'package:flutter/services.dart';
+import 'package:siento_shop/components/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:siento_shop/pages/splash/splash_screen.dart';
 import 'package:siento_shop/router.dart';
 import 'package:siento_shop/providers/user_provider.dart';
-import 'package:siento_shop/pages/auth/services/auth_service.dart';
 import 'package:siento_shop/pages/home/providers/search_provider.dart';
 import 'package:siento_shop/pages/home/providers/filter_provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
@@ -31,25 +32,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final AuthService authService = AuthService();
-
-  @override
-  void initState() {
-    authService.getUserData(context);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark));
+
     return ScreenUtilInit(
+        designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
         useInheritedMediaQuery: true,
         rebuildFactor: (old, data) => true,
         builder: (context, widget) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false,
             title: 'Siento Shop',
+            debugShowCheckedModeBanner: false,
             builder: (context, widget) {
               return Theme(
                 data: MyTheme.getThemeData(isLight: true),
@@ -60,11 +58,6 @@ class _MyAppState extends State<MyApp> {
               );
             },
             onGenerateRoute: (settings) => generateRoute(settings),
-            // home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-            //     ? Provider.of<UserProvider>(context).user.type == 'user'
-            //         ? const BottomBar()
-            //         : const AdminScreen()
-            //     : const AuthScreen(),
             home: const SplashScreen(),
           );
         });

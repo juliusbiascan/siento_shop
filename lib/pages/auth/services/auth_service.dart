@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:siento_shop/pages/admin/screens/admin_screen.dart';
+import 'package:siento_shop/pages/auth/screens/auth_screen.dart';
 import 'package:siento_shop/providers/user_provider.dart';
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
+import 'package:siento_shop/components/widgets/bottom_bar.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/constants/error_handling.dart';
 import 'package:siento_shop/constants/utils.dart';
@@ -95,8 +97,23 @@ class AuthService {
 
             //dont use context across asynchronous gaps
             if (context.mounted) {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, BottomBar.routeName, (route) => false);
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        Provider.of<UserProvider>(context, listen: false)
+                                .user
+                                .token
+                                .isNotEmpty
+                            ? Provider.of<UserProvider>(context, listen: false)
+                                        .user
+                                        .type ==
+                                    'user'
+                                ? const BottomBar()
+                                : const AdminScreen()
+                            : const AuthScreen(),
+                  ),
+                  (route) => false);
             }
           },
         );

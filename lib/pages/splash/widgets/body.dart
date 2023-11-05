@@ -1,5 +1,5 @@
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
-import 'package:siento_shop/common/widgets/custom_button.dart';
+import 'package:siento_shop/components/widgets/bottom_bar.dart';
+import 'package:siento_shop/components/widgets/custom_button.dart';
 import 'package:siento_shop/pages/admin/screens/admin_screen.dart';
 import 'package:siento_shop/pages/auth/screens/auth_screen.dart';
 import 'package:siento_shop/pages/splash/widgets/splash_content.dart';

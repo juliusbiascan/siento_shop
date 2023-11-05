@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siento_shop/models/order.dart';
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
+import 'package:siento_shop/components/widgets/bottom_bar.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/account/widgets/single_product.dart';
 import 'package:siento_shop/pages/account/services/account_services.dart';

@@ -1,10 +1,9 @@
-import 'package:flutter/foundation.dart';
-import 'package:siento_shop/common/widgets/screen_title.dart';
+import 'package:siento_shop/components/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-//String uri = 'https://lively-pike-tux.cyclic.app';
-String uri = kIsWeb ? 'http://localhost:3000' : 'http://10.0.2.2:3000';
+String uri = 'https://lively-pike-tux.cyclic.app';
+//String uri = kIsWeb ? 'http://localhost:3000' : 'http://10.0.2.2:3000';
 
 class GlobalVariables {
   // COLORS
@@ -129,7 +128,7 @@ class GlobalVariables {
       ),
       iconTheme: const IconThemeData(color: Colors.black),
       automaticallyImplyLeading: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       actions: wantActions!
           ? [
               Padding(
@@ -174,7 +173,7 @@ class GlobalVariables {
           ),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       actions: [
         TextButton(
             onPressed: () {},

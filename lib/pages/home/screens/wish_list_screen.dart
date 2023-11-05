@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:siento_shop/providers/user_provider.dart';
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
+import 'package:siento_shop/components/widgets/bottom_bar.dart';
 import 'package:siento_shop/pages/home/screens/wish_list_product.dart';
 
 class WishListScreen extends StatefulWidget {

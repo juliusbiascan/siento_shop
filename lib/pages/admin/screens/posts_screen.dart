@@ -5,7 +5,7 @@ import 'package:siento_shop/constants/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'package:siento_shop/models/product.dart';
-import 'package:siento_shop/common/widgets/loader.dart';
+import 'package:siento_shop/components/widgets/loader.dart';
 import 'package:siento_shop/pages/admin/services/admin_services.dart';
 import 'package:siento_shop/pages/account/widgets/single_product.dart';
 import 'package:siento_shop/pages/admin/screens/add_product_screen.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:siento_shop/common/widgets/bottom_bar.dart';
+import 'package:siento_shop/components/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:siento_shop/pages/admin/screens/admin_screen.dart';
@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }
     return Scaffold(
         body: FutureBuilder(
-            future: Future.delayed(const Duration(milliseconds: 5000), () {
+            future: Future.delayed(const Duration(seconds: 2), () {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -62,7 +62,10 @@ class _SplashScreenState extends State<SplashScreen> {
               );
             }),
             builder: (context, snapshot) {
-              return const SplashContent();
+              return const SplashContent(
+                text: "Experience convenience at your fingertips",
+                image: "assets/images/app_icon.png",
+              );
             }));
   }
 }

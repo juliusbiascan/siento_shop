@@ -9,6 +9,7 @@ import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/search/screens/search_screen.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
 import 'package:siento_shop/pages/product_details/services/product_detail_services.dart';
+import 'package:expandable_text/expandable_text.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const routeName = '/product-details';
@@ -86,7 +87,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               });
                             },
                             itemCount: widget.product.images.length,
-                            // physics: PageScrollPhysics(),
+                            //physics: const PageScrollPhysics(),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               // print("............index = $index");
@@ -132,14 +133,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: mq.height * .01),
-              // const Text("About the Product",
-              //     style: TextStyle(fontWeight: FontWeight.w700)),
-              Text(widget.product.description,
-                  style: TextStyle(color: Colors.grey.shade500),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis),
+              const Text("About the Product",
+                  style: TextStyle(fontWeight: FontWeight.w700)),
 
-              // SizedBox(height: mq.height * .01),
+              ExpandableText(
+                widget.product.description,
+                expandText: 'show more',
+                collapseText: 'show less',
+                maxLines: 1,
+                linkColor: Colors.blue,
+                style: TextStyle(color: Colors.grey.shade500),
+              ),
+
+              SizedBox(height: mq.height * .01),
               Row(
                 // mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,43 +181,39 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       }),
                 ],
               ),
-              // SizedBox(height: mq.height * .01),
-              // Divider(
-              //   endIndent: mq.width * .01,
-              //   indent: mq.width * .01,
-              //   thickness: 2,
-              //   color: Colors.grey[300],
-              // ),
-              // SizedBox(height: mq.height * .01),
+              SizedBox(height: mq.height * .01),
+              Divider(
+                endIndent: mq.width * .01,
+                indent: mq.width * .01,
+                thickness: 2,
+                color: Colors.grey[300],
+              ),
+              SizedBox(height: mq.height * .01),
               isProductAvailable
-                  ? const Text(
+                  ? Text(
                       "Out of Stock",
                       style: TextStyle(
-                          color: Colors.redAccent, fontWeight: FontWeight.w600),
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.w600),
                     )
                   : const Text("In Stock",
                       style: TextStyle(color: Colors.teal)),
               // Container(height: 5, color: Colors.grey[200]),
               SizedBox(height: mq.height * .01),
-              // ElevatedButton(
-              //   onPressed: () {},
-              //   style: ElevatedButton.styleFrom(
-              //       minimumSize: Size(double.infinity, mq.height * .08),
-              //       backgroundColor: Colors.yellow.shade500),
-              //   child: const Text("Buy Now",
-              //       style: TextStyle(color: Colors.black)),
-              // ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    minimumSize: Size(double.infinity, mq.height * .08),
+                    backgroundColor: Colors.yellow.shade500),
+                child: const Text("Buy Now",
+                    style: TextStyle(color: Colors.black)),
+              ),
               SizedBox(height: mq.width * .025),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black, width: 1),
-                      // color: Color.fromARGB(255, 147, 147, 147),
-                    ),
                     child: Text(
                       "PHP ${widget.product.price.toStringAsFixed(2)}  ",
                       textAlign: TextAlign.center,

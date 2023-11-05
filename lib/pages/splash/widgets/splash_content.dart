@@ -27,7 +27,7 @@ class SplashContent extends StatelessWidget {
               "SIENTO",
               style: TextStyle(
                 fontSize: 50,
-                color: Colors.orange.shade400,
+                color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -41,8 +41,8 @@ class SplashContent extends StatelessWidget {
         const Spacer(flex: 2),
         Image.asset(
           image!,
-          height: 265,
-          width: 235,
+          height: 100,
+          width: 100,
         ),
       ],
     );

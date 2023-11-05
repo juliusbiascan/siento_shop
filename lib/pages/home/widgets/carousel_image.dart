@@ -22,11 +22,11 @@ class CarouselImage extends StatelessWidget {
       options: CarouselOptions(
         enlargeCenterPage: true,
         autoPlayAnimationDuration: const Duration(milliseconds: 1500),
-        // aspectRatio: 16 / 9,
+        aspectRatio: 16 / 9,
         autoPlayCurve: Curves.easeInOutCubic,
         scrollPhysics: const ClampingScrollPhysics(),
         autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 50),
+        autoPlayInterval: const Duration(seconds: 10),
         viewportFraction: 1,
         height: mq.width * .3,
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:siento_shop/models/product.dart';
-import 'package:siento_shop/common/widgets/stars.dart';
+import 'package:siento_shop/components/widgets/stars.dart';
 
 class SearchedProduct extends StatelessWidget {
   final Product product;

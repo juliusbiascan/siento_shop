@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import 'package:siento_shop/common/widgets/custom_button.dart';
+import 'package:siento_shop/components/widgets/custom_button.dart';
 import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/constants/utils.dart';
 import 'package:siento_shop/pages/admin/services/admin_services.dart';

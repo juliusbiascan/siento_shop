@@ -96,6 +96,9 @@ dependencies:
   #for my loading animation
   flutter_spinkit: ^5.2.0
 
+  #for my expandable text
+  expandable_text: ^2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
