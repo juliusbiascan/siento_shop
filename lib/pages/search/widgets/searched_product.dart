@@ -29,12 +29,11 @@ class SearchedProduct extends StatelessWidget {
     return Column(
       children: [
         Card(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           elevation: 1.5,
           // margin: EdgeInsets.symmetric(
           //     horizontal: mq.width * .025, vertical: mq.width * .025),
           child: Container(
-            color: Colors.white,
             margin: EdgeInsets.symmetric(horizontal: mq.width * .025),
             child: Row(
               children: [

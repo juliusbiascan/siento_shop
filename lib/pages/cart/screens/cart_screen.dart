@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:siento_shop/components/widgets/nodata.dart';
 
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/components/widgets/bottom_bar.dart';
@@ -51,6 +52,7 @@ class _CartScreenState extends State<CartScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const AddressBox(),
             SizedBox(height: mq.height * 0.02),
             SizedBox(
               height: mq.height * 0.50,
@@ -58,9 +60,7 @@ class _CartScreenState extends State<CartScreen> {
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset("assets/images/no-orderss.png",
-                            height: mq.height * .15),
-                        const Text("No item in cart"),
+                        const NoData(text: 'No Products in Your Cart Yet!'),
                         SizedBox(height: mq.height * 0.02),
                         ElevatedButton(
                             onPressed: () {
@@ -70,7 +70,8 @@ class _CartScreenState extends State<CartScreen> {
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                backgroundColor: Colors.deepPurpleAccent),
+                                backgroundColor:
+                                    Theme.of(context).primaryColor),
                             child: const Padding(
                               padding: EdgeInsets.only(right: 20, left: 20),
                               child: Text(
@@ -93,7 +94,6 @@ class _CartScreenState extends State<CartScreen> {
             SizedBox(height: mq.height * 0.02),
             Container(color: Colors.black12.withOpacity(0.08), height: 1),
             SizedBox(height: mq.height * 0.01),
-            const AddressBox(),
             const CartSubtotal(),
             Padding(
               padding: EdgeInsets.all(mq.width * .025),

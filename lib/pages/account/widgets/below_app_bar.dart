@@ -33,15 +33,17 @@ class _BelowAppBarState extends State<BelowAppBar> {
           RichText(
             text: TextSpan(
                 text: "Hi, ",
-                style: const TextStyle(fontSize: 22, color: Colors.black),
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(fontSize: 22),
                 children: [
                   TextSpan(
                     text: user.name,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ]),
           ),

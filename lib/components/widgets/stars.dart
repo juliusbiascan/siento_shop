@@ -1,4 +1,3 @@
-import 'package:siento_shop/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -16,7 +15,7 @@ class Stars extends StatelessWidget {
       itemBuilder: (context, index) {
         return const Icon(
           Icons.star,
-          color: GlobalVariables.secondaryColor,
+          color: Colors.amber,
         );
       },
     );

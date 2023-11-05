@@ -130,9 +130,8 @@ class _MySearchScreenState extends State<MySearchScreen> {
       onTap: () {},
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.black),
+          iconTheme: Theme.of(context).iconTheme,
           elevation: 2,
-          backgroundColor: Colors.white,
           leadingWidth: mq.width * .075,
           title: Container(
             height: mq.height * .055,
@@ -191,26 +190,12 @@ class _MySearchScreenState extends State<MySearchScreen> {
                     });
                   }
                 },
-                // when the search field is submitted
-                // redirect to search screen, i.e. to the screen
-                // with the relevant search query results
-
-                // textInputAction: TextInputAction.done,
                 onFieldSubmitted: (val) {
-                  // add the item to historyList
-                  // searchProvider.addToSuggestions(val);
                   if (val.trim().isNotEmpty) {
                     // if historyList has NOT reached maxLength
                     if (!historyList!.contains(val.toLowerCase())) {
                       addToHistory(val.toLowerCase().trim());
                     }
-
-                    // when historyList reaches maxLength
-                    // if (historyList!.length == maxLength) {
-                    // deleteSearchHistoryItem(historyList![0]);
-                    // addToHistory(val.toLowerCase().trim());
-                    // }
-
                     _searchController.clear();
                     navigateToSearchScreen(val.trim());
                   }
@@ -254,13 +239,9 @@ class _MySearchScreenState extends State<MySearchScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      // Scaffold.of(context).openDrawer();
-                      // _scaffoldKey.currentState!.openEndDrawer();
                       _speechToText.isNotListening
                           ? _startListening
                           : _stopListening;
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (_) => SpeechExample()));
                     },
                     child: Icon(
                         _speechToText.isNotListening
@@ -286,70 +267,15 @@ class _MySearchScreenState extends State<MySearchScreen> {
                         if (!historyList!.contains(listTitle.toLowerCase())) {
                           addToHistory(listTitle.toLowerCase());
                         }
-
-                        // when historyList reaches maxLength
-                        // if (!historyList!.contains(listTitle.toLowerCase())) {
-                        //   deleteSearchHistoryItem(historyList![0]);
-                        //   addToHistory(listTitle.toLowerCase());
-                        // }
-
                         navigateToSearchScreen(listTitle);
-
-                        // print(
-                        //     "\nQuery to be searched ====>  ${searchHistoryList![index]}");
-                        // navigateToSearchScreen(listTitle);
-//complete this duplicate entries are also coming
-//moreover when the search item from productNames list is clicked add it to history
-
-// trim() every query!
-
-                        // if (!searchHistoryList!
-                        //     .contains(
-                        //         searchController
-                        //             .text
-                        //             .trim())) {
-                        //   homeServices
-                        //       .setSearchHistory(
-                        //     context: context,
-                        //     searchQuery:
-                        // searchController
-                        //     .text
-                        //     .trim(),
-                        //   );
-                        // }
-
-                        // if (searchHistoryList!.length < maxLength) {
-                        //   homeServices.setSearchHistory(
-                        //     context: context,
-                        //     searchQuery: listTitle,
-                        //   );
-                        // } else if (searchHistoryList!.length == maxLength) {
-                        //   print("\n\n====> max length reached...");
-                        //   setState(() {
-                        //     homeServices.deleteSearchHistoryItem(
-                        //         context: context, deleteQuery: searchHistoryList![0]);
-                        //     // searchHistoryList!.removeAt(0);
-                        //     homeServices.setSearchHistory(
-                        //         context: context, searchQuery: listTitle);
-                        //     // searchHistoryList!
-                        //     //     .add(query.trim());
-                        //   });
-                        // }
-
-                        // isSearchOn = false;
-                        // searchController.clear();
                       },
                       title: Text(listTitle,
                           maxLines: 1, overflow: TextOverflow.ellipsis),
                       // contentPadding: EdgeInsets.zero,
-                      leading: const Icon(
+                      leading: Icon(
                         Icons.trending_up_rounded,
-                        color: Colors.grey,
-                        shadows: [Shadow(blurRadius: 0.4)],
-                      ),
-                      tileColor: Colors.grey.shade100,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(18)),
+                        color: Theme.of(context).iconTheme.color,
+                        shadows: const [Shadow(blurRadius: 0.4)],
                       ),
                     );
                   },
@@ -371,62 +297,7 @@ class _MySearchScreenState extends State<MySearchScreen> {
                                   addToHistory(listTitle.toLowerCase());
                                 }
 
-                                // // when historyList reaches maxLength
-                                // if (!historyList!
-                                //     .contains(listTitle.toLowerCase())) {
-                                //   homeServices.deleteSearchHistoryItem(
-                                //       context: context,
-                                //       deleteQuery: historyList![0]);
-                                //   addToHistory(listTitle.toLowerCase());
-                                // }
-
                                 navigateToSearchScreen(listTitle);
-
-                                /*
-                        // print(
-                        //     "\nQuery to be searched ====>  ${searchHistoryList![index]}");
-                        // navigateToSearchScreen(listTitle);
-//complete this duplicate entries are also coming
-//moreover when the search item from productNames list is clicked add it to history
-
-// trim() every query!
-
-                        // if (!searchHistoryList!
-                        //     .contains(
-                        //         searchController
-                        //             .text
-                        //             .trim())) {
-                        //   homeServices
-                        //       .setSearchHistory(
-                        //     context: context,
-                        //     searchQuery:
-                        // searchController
-                        //     .text
-                        //     .trim(),
-                        //   );
-                        // }
-
-                        // if (searchHistoryList!.length < maxLength) {
-                        //   homeServices.setSearchHistory(
-                        //     context: context,
-                        //     searchQuery: listTitle,
-                        //   );
-                        // } else if (searchHistoryList!.length == maxLength) {
-                        //   print("\n\n====> max length reached...");
-                        //   setState(() {
-                        //     homeServices.deleteSearchHistoryItem(
-                        //         context: context, deleteQuery: searchHistoryList![0]);
-                        //     // searchHistoryList!.removeAt(0);
-                        //     homeServices.setSearchHistory(
-                        //         context: context, searchQuery: listTitle);
-                        //     // searchHistoryList!
-                        //     //     .add(query.trim());
-                        //   });
-                        // }
-
-                        // isSearchOn = false;
-                        // searchController.clear();
-                        */
                               },
                               title: Text(listTitle,
                                   maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -435,11 +306,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
                                 Icons.trending_up_rounded,
                                 color: Colors.grey,
                                 shadows: [Shadow(blurRadius: 0.4)],
-                              ),
-                              tileColor: Colors.grey.shade100,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(18)),
                               ),
                             );
                           },
@@ -458,76 +324,7 @@ class _MySearchScreenState extends State<MySearchScreen> {
                         // searchProvider.getSugggetions!.toList()[index].trim();
                         return ListTile(
                           onTap: () {
-                            // if (!historyList!
-                            //         .contains(listTitle.toLowerCase()) &&
-                            //     historyList!.length < maxLength) {
-                            //   addToHistory(listTitle.toLowerCase());
-                            // }
-
-                            // // when historyList reaches maxLength
-                            // if (!historyList!
-                            //         .contains(listTitle.toLowerCase()) &&
-                            //     historyList!.length == maxLength) {
-                            //   homeServices.deleteSearchHistoryItem(
-                            //       context: context,
-                            //       deleteQuery: historyList![0]);
-                            //   addToHistory(listTitle.toLowerCase());
-                            // }
-
-                            // if (historyList!
-                            //     .contains(listTitle.toLowerCase())) {
-                            //   String deleteQuery = listTitle;
-                            //   deleteSearchHistoryItem(deleteQuery);
-                            //   addToHistory(deleteQuery);
-                            // }
-
                             navigateToSearchScreen(listTitle);
-
-                            /*
-                        // print(
-                        //     "\nQuery to be searched ====>  ${searchHistoryList![index]}");
-                        // navigateToSearchScreen(listTitle);
-//complete this duplicate entries are also coming
-//moreover when the search item from productNames list is clicked add it to history
-
-// trim() every query!
-
-                        // if (!searchHistoryList!
-                        //     .contains(
-                        //         searchController
-                        //             .text
-                        //             .trim())) {
-                        //   homeServices
-                        //       .setSearchHistory(
-                        //     context: context,
-                        //     searchQuery:
-                        // searchController
-                        //     .text
-                        //     .trim(),
-                        //   );
-                        // }
-
-                        // if (searchHistoryList!.length < maxLength) {
-                        //   homeServices.setSearchHistory(
-                        //     context: context,
-                        //     searchQuery: listTitle,
-                        //   );
-                        // } else if (searchHistoryList!.length == maxLength) {
-                        //   print("\n\n====> max length reached...");
-                        //   setState(() {
-                        //     homeServices.deleteSearchHistoryItem(
-                        //         context: context, deleteQuery: searchHistoryList![0]);
-                        //     // searchHistoryList!.removeAt(0);
-                        //     homeServices.setSearchHistory(
-                        //         context: context, searchQuery: listTitle);
-                        //     // searchHistoryList!
-                        //     //     .add(query.trim());
-                        //   });
-                        // }
-
-                        // isSearchOn = false;
-                        // searchController.clear();
-                        */
                           },
                           title: Text(listTitle,
                               maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -545,10 +342,6 @@ class _MySearchScreenState extends State<MySearchScreen> {
                                   context: context, deleteQuery: listTitle);
                             },
                             icon: const Icon(Icons.cancel),
-                          ),
-                          tileColor: Colors.grey.shade100,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(18)),
                           ),
                         );
                       },
@@ -579,99 +372,3 @@ class _MySearchScreenState extends State<MySearchScreen> {
     );
   }
 }
-
-/*
-class MySearchDelegate extends SearchDelegate {
-  MySearchDelegate({required this.searchResults});
-
-  List<String> searchResults;
-
-  //  ['Puma', 'DBZ', 'Bottle', 'Iphone', 'Australia'];
-
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(
-      // colorScheme: ColorScheme.dark(background: Colors.redAccent),
-      colorSchemeSeed: Colors.white,
-
-      scaffoldBackgroundColor: const Color.fromARGB(255, 241, 219, 219),
-    );
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return InkWell(
-      onTap: () => close(context, null),
-      child: const Icon(Icons.arrow_back_ios),
-    );
-  }
-
-  @override
-  InputDecorationTheme? get searchFieldDecorationTheme =>
-      const InputDecorationTheme(
-        filled: true,
-        fillColor: Colors.grey,
-        labelStyle: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-      );
-
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      Padding(
-        padding: const EdgeInsets.only(right: 10.0),
-        child: InkWell(
-          onTap: () {
-            // if search is already empty, close it
-            if (query.isEmpty) {
-              close(context, null);
-            }
-            // else clear the query
-            else {
-              query = '';
-            }
-          },
-          child: const Icon(CupertinoIcons.xmark_circle_fill),
-        ),
-      )
-    ];
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    // void navigateToSearchScreen(String query) {
-    //   //make sure to pass the arguments here!
-    //   Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
-    // }
-
-    return SearchScreen(searchQuery: query);
-
-    // Center(child: Text(query, style: const TextStyle(fontSize: 50)));
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = searchResults.where((searchResult) {
-      final result = searchResult.toLowerCase();
-      final input = query.toLowerCase();
-      return result.contains(input);
-    }).toList();
-
-    return ListView.builder(
-      itemCount: suggestions.length,
-      itemBuilder: (context, index) {
-        final suggestion = suggestions[index];
-        return ListTile(
-          title: Text(suggestion),
-          onTap: () {
-            query = suggestion;
-            showResults(context);
-          },
-        );
-      },
-    );
-  }
-}
-*/

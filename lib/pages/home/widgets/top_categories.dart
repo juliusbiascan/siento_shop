@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:siento_shop/pages/home/widgets/carousel_image.dart';
 
 import 'package:siento_shop/models/product.dart';
@@ -111,10 +112,13 @@ class _TopCategoriesState extends State<TopCategories>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
-                              GlobalVariables.categoryImages[index]['image']!,
-                              height: 20,
-                              // ignore: deprecated_member_use
-                            ),
+                                GlobalVariables.categoryImages[index]['image']!,
+                                height: 20,
+                                colorFilter: ColorFilter.mode(
+                                    Theme.of(context).iconTheme.color!,
+                                    BlendMode.srcIn)
+                                // ignore: deprecated_member_use
+                                ),
                             SizedBox(width: mq.width * .015),
                             Text(
                               GlobalVariables.categoryImages[index]['title']!,
@@ -130,6 +134,7 @@ class _TopCategoriesState extends State<TopCategories>
             ),
           ),
         ),
+        SizedBox(height: mq.height * .02),
         const CarouselImage(),
         NotificationListener(
           onNotification: (scrollNotification) {
@@ -160,10 +165,8 @@ class _TopCategoriesState extends State<TopCategories>
                                 context, categoriesList[activeTabIndex]);
                           },
                           child: Text("See More >",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey.shade800,
-                                  fontWeight: FontWeight.w600)),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 12, fontWeight: FontWeight.w600)),
                         ),
                       ),
                       productList == null
@@ -193,6 +196,7 @@ class _TopCategoriesState extends State<TopCategories>
                                         SizedBox(
                                           child: Card(
                                             elevation: 1,
+                                            color: Theme.of(context).cardColor,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(5),

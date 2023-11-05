@@ -1,4 +1,3 @@
-import 'package:siento_shop/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/providers/user_provider.dart';
@@ -16,26 +15,18 @@ class AddressBox extends StatelessWidget {
       height: mq.height * .055,
       decoration: BoxDecoration(
         border: Border.all(width: 0.7, color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(15),
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromARGB(255, 15, 15, 15),
-            Color.fromARGB(255, 30, 30, 30),
-          ],
-          stops: [0.5, 1.0],
-        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       child: Row(
         children: [
           Icon(Icons.location_on_outlined,
-              color: GlobalVariables.secondaryGreyTextColor),
+              color: Theme.of(context).iconTheme.color),
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(left: mq.width * .0125),
               child: Text(
                 "Delivery to ${user.name} - ${user.address}",
                 style: const TextStyle(
-                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                     overflow: TextOverflow.ellipsis,
                     fontSize: 12),

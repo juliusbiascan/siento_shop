@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'package:siento_shop/models/product.dart';
@@ -86,16 +87,21 @@ class _WishListProductState extends State<WishListProduct> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      elevation: 1,
+                      foregroundColor: Colors.black,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      minimumSize: Size(mq.width * 0.3, 20),
+                      elevation: 2,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          side: const BorderSide(
-                              color: Colors.black, width: 0.4)),
-                      backgroundColor: Colors.deepPurple,
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
                     ),
-                    child: const Text(
+                    child: Text(
                       "Add to cart",
-                      style: TextStyle(color: Colors.white, fontSize: 13),
+                      style: GoogleFonts.lato(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

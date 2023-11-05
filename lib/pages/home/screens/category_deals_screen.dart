@@ -120,7 +120,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                         children: [
                           Divider(
                               height: 10, thickness: 20, color: Colors.grey),
-                          Text("Filters(1)"),
+                          Text("Filters (1)"),
                           Icon(Icons.arrow_drop_down),
                         ],
                       ),

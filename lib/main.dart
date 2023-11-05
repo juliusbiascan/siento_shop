@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             builder: (context, widget) {
               return Theme(
-                data: MyTheme.getThemeData(isLight: true),
+                data: MyTheme.getThemeData(isLight: false),
                 child: MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                   child: widget!,

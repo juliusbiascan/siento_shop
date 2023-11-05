@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:siento_shop/constants/constants.dart';
+import 'package:siento_shop/pages/home/screens/wish_list_screen.dart';
 import 'package:siento_shop/providers/user_provider.dart';
 import 'package:siento_shop/pages/cart/screens/cart_screen.dart';
 import 'package:siento_shop/pages/home/screens/home_screen.dart';
@@ -21,7 +24,8 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    CategoryGridScreen(),
+    const WishListScreen(),
+    const CategoryGridScreen(),
     const CartScreen(),
     const AccountScreen(),
   ];
@@ -80,49 +84,55 @@ class _BottomBarState extends State<BottomBar> {
             onTap: updatePage,
             items: [
               //HOME PAGE
-              BottomNavigationBarItem(
-                icon: SizedBox(
-                  child: _page == 0
-                      ? const Icon(Icons.home)
-                      : const Icon(Icons.home_outlined),
-                ),
+              _mBottomNavItem(
+                icon: Constants.homeIcon,
                 label: 'Home',
+              ),
+              _mBottomNavItem(
+                label: 'Favorites',
+                icon: Constants.favoritesIcon,
               ),
               // CATEGORIES
               BottomNavigationBarItem(
-                icon: SizedBox(
-                  child: _page == 1
-                      ? const Icon(Icons.grid_view_sharp)
-                      : const Icon(Icons.grid_view_outlined),
-                ),
+                icon: Icon(Icons.grid_view_sharp,
+                    color: Theme.of(context).iconTheme.color),
+                activeIcon: Icon(Icons.grid_view_outlined,
+                    color: Theme.of(context).primaryColor),
                 label: 'Categories',
               ),
 
               //CART
               BottomNavigationBarItem(
-                icon: SizedBox(
-                  child: badges.Badge(
-                    // displaying no of items in cart
+                icon: badges.Badge(
                     badgeContent: Text("$userCartLen",
                         style: const TextStyle(color: Colors.white)),
-
                     badgeStyle: const badges.BadgeStyle(
                         badgeColor: Color.fromARGB(255, 19, 17, 17)),
-                    child: _page == 2
-                        ? const Icon(Icons.shopping_cart_rounded)
-                        : const Icon(
-                            Icons.shopping_cart_outlined,
-                          ),
+                    child: Icon(
+                      Icons.shopping_cart_rounded,
+                      color: Theme.of(context).iconTheme.color,
+                    )),
+                activeIcon: badges.Badge(
+                  badgeContent: Text("$userCartLen",
+                      style: const TextStyle(color: Colors.white)),
+                  badgeStyle: const badges.BadgeStyle(
+                      badgeColor: Color.fromARGB(255, 19, 17, 17)),
+                  child: Icon(
+                    Icons.shopping_cart_outlined,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
                 label: 'Cart',
               ),
               //ACCOUNT
               BottomNavigationBarItem(
-                icon: SizedBox(
-                  child: _page == 3
-                      ? const Icon(Icons.person_rounded)
-                      : const Icon(Icons.person_outlined),
+                icon: Icon(
+                  Icons.person_rounded,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                activeIcon: Icon(
+                  Icons.person_outlined,
+                  color: Theme.of(context).primaryColor,
                 ),
                 label: 'Me',
               ),
@@ -130,6 +140,18 @@ class _BottomBarState extends State<BottomBar> {
           ),
         ),
       ),
+    );
+  }
+
+  _mBottomNavItem({required String label, required String icon}) {
+    return BottomNavigationBarItem(
+      label: label,
+      icon: SvgPicture.asset(icon,
+          colorFilter: ColorFilter.mode(
+              Theme.of(context).iconTheme.color!, BlendMode.srcIn)),
+      activeIcon: SvgPicture.asset(icon,
+          colorFilter: ColorFilter.mode(
+              Theme.of(context).primaryColor, BlendMode.srcIn)),
     );
   }
 }

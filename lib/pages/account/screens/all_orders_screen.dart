@@ -47,6 +47,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
         itemCount: widget.allOrders!.length,
         itemBuilder: (context, index) {
           return Card(
+            color: Theme.of(context).cardColor,
             margin: const EdgeInsets.all(5),
             elevation: 1,
             shape: RoundedRectangleBorder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -13,13 +14,22 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.black,
         splashFactory: NoSplash.splashFactory,
-        minimumSize: Size(double.infinity, mq.height * .08),
+        minimumSize: Size(double.infinity, mq.height * .06),
         backgroundColor: color,
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(32.0),
+        ),
       ),
       child: Text(
         text,
-        style: const TextStyle(color: Colors.white),
+        style: GoogleFonts.lato(
+          color: Colors.white,
+          fontSize: 18.0,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

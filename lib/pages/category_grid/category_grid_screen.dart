@@ -4,12 +4,14 @@ import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/search_delegate/my_search_screen.dart';
 import 'package:siento_shop/pages/home/screens/category_deals_screen.dart';
 
-class CategoryGridScreen extends StatelessWidget {
-  CategoryGridScreen({super.key});
+class CategoryGridScreen extends StatefulWidget {
+  const CategoryGridScreen({super.key});
 
-  final List<Map<String, String>> myCategoryList =
-      GlobalVariables.categoryImages2;
+  @override
+  State<CategoryGridScreen> createState() => _CategoryGridScreenState();
+}
 
+class _CategoryGridScreenState extends State<CategoryGridScreen> {
   final List<String> productCategories = [
     "Mobiles",
     "Essentials",
@@ -27,7 +29,6 @@ class CategoryGridScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size mq = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
       appBar: GlobalVariables.getAppBar(
           context: context,
           wantBackNavigation: false,
@@ -42,17 +43,17 @@ class CategoryGridScreen extends StatelessWidget {
             crossAxisSpacing: mq.width * .03,
             mainAxisSpacing: mq.width * .015,
             crossAxisCount: 2),
-        itemCount: myCategoryList.length,
+        itemCount: productCategories.length,
         itemBuilder: (context, index) {
           // print("\n\nimage path is : ${myCategoryList[index]['title']}");
-          final categoryTitle = myCategoryList[index]['title'];
-          final categoryImage = myCategoryList[index]['image'];
+          final categoryTitle = productCategories[index];
 
           return InkWell(
             onTap: () {
               navigateToCategoryPage(context, productCategories[index]);
             },
             child: Card(
+              color: Theme.of(context).cardColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               elevation: 2,
@@ -60,17 +61,12 @@ class CategoryGridScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    height: 80,
-                    child: Image.asset(categoryImage!),
-                  ),
-                  SizedBox(height: mq.height * .01),
                   Text(
-                    categoryTitle!,
+                    categoryTitle,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: const TextStyle(
-                        fontWeight: FontWeight.w200, fontSize: 16),
+                        fontWeight: FontWeight.w800, fontSize: 16),
                   )
                 ],
               ),

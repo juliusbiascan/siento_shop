@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 import 'package:siento_shop/constants/utils.dart';
@@ -208,6 +209,7 @@ class _AddressScreenState extends State<AddressScreen> {
                         children: [
                           for (int i = 0; i < 3; i++)
                             Card(
+                              color: Theme.of(context).cardColor,
                               elevation: 2,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
@@ -261,8 +263,8 @@ class _AddressScreenState extends State<AddressScreen> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const Text("Select payment method",
-                                  style: GlobalVariables.appBarTextStyle),
+                              Text("Select payment method",
+                                  style: GoogleFonts.poppins()),
                               Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
@@ -377,8 +379,7 @@ class _AddressScreenState extends State<AddressScreen> {
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Text("Pick an address",
-                              style: GlobalVariables.appBarTextStyle),
+                          Text("Pick an address", style: GoogleFonts.poppins()),
                           address.isNotEmpty
                               ? Container(
                                   width: double.infinity,

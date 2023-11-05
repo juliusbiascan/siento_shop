@@ -18,7 +18,7 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
-        // automaticallyImplyLeading: true,
+        automaticallyImplyLeading: true,
         // leading: Text(("Filters")),
         leadingWidth: 0,
         leading: const SizedBox.shrink(),
@@ -27,7 +27,6 @@ class _FilterScreenState extends State<FilterScreen> {
           style: TextStyle(
               color: Colors.black, fontSize: 20, fontStyle: FontStyle.normal),
         ),
-        backgroundColor: Colors.white,
         elevation: 1,
         actions: [
           TextButton(

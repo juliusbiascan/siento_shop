@@ -25,7 +25,7 @@ class AccountButton extends StatelessWidget {
               )),
           child: Text(
             text,
-            style: const TextStyle(color: Colors.black),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
       ),

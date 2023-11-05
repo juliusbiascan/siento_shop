@@ -126,6 +126,8 @@ flutter:
     - assets/google_pay_config.json
     - assets/images/croppedsuccess.gif
     - assets/images/
+    - assets/vectors/
+    - assets/fonts/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siento_shop/models/order.dart';
 import 'package:siento_shop/components/widgets/bottom_bar.dart';
-import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/account/widgets/single_product.dart';
 import 'package:siento_shop/pages/account/services/account_services.dart';
 import 'package:siento_shop/pages/account/screens/all_orders_screen.dart';
@@ -64,12 +63,12 @@ class _OrdersState extends State<Orders> {
                     },
               child: Container(
                 padding: EdgeInsets.only(right: mq.width * 0.04),
-                child: Text(
+                child: const Text(
                   "See all",
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: GlobalVariables.selectedNavBarColor),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),

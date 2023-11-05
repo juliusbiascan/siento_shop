@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/pages/admin/screens/posts_screen.dart';
 import 'package:siento_shop/pages/admin/screens/orders_screen.dart';
 import 'package:siento_shop/pages/admin/screens/analytics_screen.dart';
@@ -34,67 +34,68 @@ class _AdminScreenState extends State<AdminScreen> {
     // print(
     //     "Type of user ==========> ${Provider.of<UserProvider>(context).user.type}");
     return Scaffold(
-      body: pages[_page],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _page,
-        selectedItemColor: GlobalVariables.selectedNavBarColor,
-        unselectedItemColor: GlobalVariables.unselectedNavBarColor,
-        backgroundColor: GlobalVariables.backgroundColor,
-        iconSize: 28,
-        onTap: updatePage,
-        items: [
-          //POSTS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                      color: _page == 0
-                          ? GlobalVariables.selectedNavBarColor
-                          : GlobalVariables.backgroundColor,
-                      width: bottomBarBorderWidth),
-                ),
-              ),
-              child: const Icon(Icons.home_outlined),
-            ),
-            label: '',
+      body: SafeArea(
+        bottom: false,
+        child: pages[_page],
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(top: 10.h, bottom: 20.h),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25.r),
+            topRight: Radius.circular(25.r),
           ),
-          //ANALYTICS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                      color: _page == 1
-                          ? GlobalVariables.selectedNavBarColor
-                          : GlobalVariables.backgroundColor,
-                      width: bottomBarBorderWidth),
-                ),
-              ),
-              child: const Icon(Icons.analytics_outlined),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black38,
+              spreadRadius: 0,
+              blurRadius: 10,
             ),
-            label: '',
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25.r),
+            topRight: Radius.circular(25.r),
           ),
-          //ORDERS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                      color: _page == 2
-                          ? GlobalVariables.selectedNavBarColor
-                          : GlobalVariables.backgroundColor,
-                      width: bottomBarBorderWidth),
+          child: BottomNavigationBar(
+            currentIndex: _page,
+            type: BottomNavigationBarType.fixed,
+            elevation: 0.0,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedFontSize: 0.0,
+            onTap: updatePage,
+            items: [
+              //POSTS
+              BottomNavigationBarItem(
+                icon: SizedBox(
+                  width: bottomBarWidth,
+                  child: const Icon(Icons.home_outlined),
                 ),
+                label: '',
               ),
-              child: const Icon(Icons.all_inbox_outlined),
-            ),
-            label: '',
+              //ANALYTICS
+              BottomNavigationBarItem(
+                icon: SizedBox(
+                  width: bottomBarWidth,
+                  child: const Icon(Icons.analytics_outlined),
+                ),
+                label: '',
+              ),
+              //ORDERS
+              BottomNavigationBarItem(
+                icon: SizedBox(
+                  width: bottomBarWidth,
+                  child: const Icon(Icons.all_inbox_outlined),
+                ),
+                label: '',
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -9,18 +9,14 @@ class SingleProduct extends StatelessWidget {
     Size mq = MediaQuery.of(context).size;
     return Container(
         padding: EdgeInsets.symmetric(horizontal: mq.width * .0125),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black12, width: 1.5),
-              borderRadius: BorderRadius.circular(mq.width * .0125),
-              color: Colors.white),
+        child: Card(
+          color: Theme.of(context).cardColor,
           child: Container(
             width: mq.width * .45,
             padding: EdgeInsets.all(mq.width * .025),
             child: Image.network(
               image,
-              fit: BoxFit.fitHeight,
-              width: mq.width * .45,
+              fit: BoxFit.fill,
             ),
           ),
         ));

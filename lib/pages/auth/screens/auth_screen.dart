@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:siento_shop/constants/utils.dart';
-import 'package:siento_shop/constants/global_variables.dart';
 import 'package:siento_shop/components/widgets/custom_textfield.dart';
 import 'package:siento_shop/pages/auth/services/auth_service.dart';
 
@@ -70,13 +70,10 @@ class _AuthScreenState extends State<AuthScreen> {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
               resizeToAvoidBottomInset: false,
-              backgroundColor: GlobalVariables.greyBackgroundColor,
               body: SafeArea(
-                child: Container(
+                child: SizedBox(
                   height: mq.height,
                   width: mq.width,
-                  decoration: const BoxDecoration(
-                      gradient: GlobalVariables.loginPageGradient),
                   child: Padding(
                     padding: EdgeInsets.all(mq.width * .1),
                     child: SingleChildScrollView(
@@ -122,16 +119,22 @@ class _AuthScreenState extends State<AuthScreen> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.black,
+                                  splashFactory: NoSplash.splashFactory,
+                                  minimumSize:
+                                      Size(double.infinity, mq.height * .06),
+                                  elevation: 2,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12)),
-                                  minimumSize: Size(mq.width, mq.height * 0.08),
+                                    borderRadius: BorderRadius.circular(32.0),
+                                  ),
                                 ),
                                 child: Text(
                                   "SIGN IN",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelLarge!
-                                      .copyWith(color: Colors.white),
+                                  style: GoogleFonts.lato(
+                                    color: Colors.white,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
@@ -153,11 +156,12 @@ class _AuthScreenState extends State<AuthScreen> {
                                       isSignIn = !isSignIn;
                                     });
                                   },
-                                  child: const Text(
-                                    "Sign Up",
+                                  child: Text(
+                                    "Sign up",
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
+                                        color: Theme.of(context).primaryColor,
                                         decorationStyle:
                                             TextDecorationStyle.solid),
                                   ),
@@ -177,17 +181,13 @@ class _AuthScreenState extends State<AuthScreen> {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
               resizeToAvoidBottomInset: false,
-              backgroundColor: GlobalVariables.greyBackgroundColor,
               body: SafeArea(
-                child: Container(
+                child: SizedBox(
                   height: mq.height,
                   width: mq.width,
-                  decoration: const BoxDecoration(
-                      gradient: GlobalVariables.loginPageGradient),
                   child: Padding(
                     padding: EdgeInsets.all(mq.width * .1),
                     child: SingleChildScrollView(
-                      reverse: true,
                       physics: const ClampingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       child: Form(
@@ -244,16 +244,22 @@ class _AuthScreenState extends State<AuthScreen> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.black,
+                                  splashFactory: NoSplash.splashFactory,
+                                  minimumSize:
+                                      Size(double.infinity, mq.height * .06),
+                                  elevation: 2,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12)),
-                                  minimumSize: Size(mq.width, mq.height * 0.08),
+                                    borderRadius: BorderRadius.circular(32.0),
+                                  ),
                                 ),
                                 child: Text(
                                   "REGISTER",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelLarge!
-                                      .copyWith(color: Colors.white),
+                                  style: GoogleFonts.lato(
+                                    color: Colors.white,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 )),
                             SizedBox(height: mq.height * .015),
                             // Divider(thickness: 3, color: Colors.grey.shade300),
@@ -273,11 +279,12 @@ class _AuthScreenState extends State<AuthScreen> {
                                       isSignIn = !isSignIn;
                                     });
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     "Sign in",
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
+                                        color: Theme.of(context).primaryColor,
                                         decorationStyle:
                                             TextDecorationStyle.solid),
                                   ),

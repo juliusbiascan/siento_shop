@@ -286,7 +286,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         itemPadding: EdgeInsets.symmetric(horizontal: mq.width * .0125),
         itemCount: 5,
         itemBuilder: (context, _) {
-          return const Icon(Icons.star, color: GlobalVariables.secondaryColor);
+          return const Icon(Icons.star, color: Colors.amber);
         },
         //changes here
         onRatingUpdate: (rating) {
