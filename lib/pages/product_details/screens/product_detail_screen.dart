@@ -132,6 +132,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
+              Container(
+                padding: const EdgeInsets.all(4),
+                child: Text(
+                  "PHP ${widget.product.price.toStringAsFixed(2)}  ",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      // color: Colors.,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
               SizedBox(height: mq.height * .01),
               const Text("About the Product",
                   style: TextStyle(fontWeight: FontWeight.w700)),
@@ -200,30 +211,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       style: TextStyle(color: Colors.teal)),
               // Container(height: 5, color: Colors.grey[200]),
               SizedBox(height: mq.height * .01),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, mq.height * .08),
-                    backgroundColor: Colors.yellow.shade500),
-                child: const Text("Buy Now",
-                    style: TextStyle(color: Colors.black)),
-              ),
+
               SizedBox(height: mq.width * .025),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    child: Text(
-                      "PHP ${widget.product.price.toStringAsFixed(2)}  ",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 20,
-                          // color: Colors.,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  SizedBox(width: mq.width * .05),
                   ElevatedButton(
                     onPressed: isProductAvailable
                         ? () {
@@ -236,11 +228,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             addToCart();
                           },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange.shade800,
-                        minimumSize: Size(mq.width * .45, mq.height * .06),
+                        backgroundColor: Theme.of(context).primaryColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(22))),
-                    child: const Text("Add to Cart"),
+                    child: Text(
+                      "Add to Cart",
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge!
+                          .copyWith(letterSpacing: 1),
+                    ),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellow.shade500),
+                    child: const Text("Buy Now",
+                        style: TextStyle(color: Colors.black)),
                   ),
                 ],
               ),
@@ -321,7 +326,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       width: currentIndex == index ? 20 : 6,
       decoration: BoxDecoration(
         color: currentIndex == index
-            ? const Color(0xFFFF7643)
+            ? Theme.of(context).primaryColor
             : const Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),

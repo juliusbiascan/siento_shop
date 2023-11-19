@@ -18,12 +18,10 @@ void showSnackBar({
               onPressed: onTapFunction,
             ),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: const Color(0xFF7700C6),
           )
         : SnackBar(
             content: Text(text),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: const Color(0xFF7700C6),
           ),
   );
 }

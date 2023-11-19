@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
             builder: (context, snapshot) {
               return const SplashContent(
                 text: "Experience convenience at your fingertips",
-                image: "assets/images/app_icon.png",
+                image: "assets/images/bottom_icons.jpg",
               );
             }));
   }

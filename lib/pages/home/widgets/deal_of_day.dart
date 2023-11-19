@@ -57,10 +57,12 @@ class _DealOfDayState extends State<DealOfDay> {
                     Stack(
                       alignment: AlignmentDirectional.topEnd,
                       children: [
-                        Image.network(
-                          // "https://github.com/AKR-2803/ShoesAppUIFlutter/blob/main/assets/images/shoes_display.png?raw=true",
-                          product!.images[0],
-                          fit: BoxFit.fitHeight,
+                        Card(
+                          child: Image.network(
+                            // "https://github.com/AKR-2803/ShoesAppUIFlutter/blob/main/assets/images/shoes_display.png?raw=true",
+                            product!.images[0],
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
                         Image.asset("assets/images/dealOfTheDaypng.png",
                             height: mq.height * 0.075),
